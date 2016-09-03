@@ -1,4 +1,4 @@
-import { StringDialog, TextPosition, PositionAfterComputer } from '../Constants.js';
+import { StringDialog, TextPosition, PositionAfterComputer, Style } from '../Constants.js';
 import Character from 'objects/Character';
 
 class GameState extends Phaser.State {
@@ -37,8 +37,7 @@ class GameState extends Phaser.State {
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-    const style = { font: "bold 15px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-    this.text = this.game.add.text(TextPosition.x, TextPosition.y, StringDialog.onComputer, style);
+    this.text = this.game.add.text(TextPosition.x, TextPosition.y, StringDialog.onComputer, Style);
     this.text.setShadow(1, 1, 'rgba(0,0,0,0.7)', 1);
     this.text.setTextBounds(TextPosition.x0, TextPosition.y0, TextPosition.x1, TextPosition.y1);
     this.text.visible = false;
