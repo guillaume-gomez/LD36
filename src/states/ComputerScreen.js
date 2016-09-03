@@ -26,8 +26,8 @@ class ComputerScreen extends Phaser.State {
     this.wordIndex = 0;
     this.lineIndex = 0;
 
-    this.wordDelay = 120;
-    this.lineDelay = 400;
+    this.wordDelay = 100;
+    this.lineDelay = 300;
 
     this.text = this.game.add.text(32, 32, '', { font: "15px Arial", fill: "#19de65" });
     this.nextLine();
