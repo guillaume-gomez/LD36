@@ -29,11 +29,17 @@ class GameState extends Phaser.State {
     this.hero = new Character(this.game, 20 , 20, "test", 0);
     this.game.add.existing(this.hero);
     this.game.camera.follow(this.hero);
+
+    this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    this.onComputer = false;
   }
 
   update() {
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.computer, this.writePressEnter, null, this);
+    if(this.onComputer && this.enterButton.isDown) {
+      this.game.goToScreenMode();
+    }
   }
 
   preload() {
@@ -46,6 +52,7 @@ class GameState extends Phaser.State {
 
   writePressEnter() {
     this.hero.lock();
+    this.onComputer = true;
     const style = { font: "bold 15px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 
     this.text = this.game.add.text(TextPosition.x, TextPosition.y, StringDialog.onComputer, style);
