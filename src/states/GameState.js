@@ -47,6 +47,9 @@ class GameState extends Phaser.State {
   update() {
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.computer, this.writePressEnter, null, this);
+    if(this.hero.x < 0) {
+      this.game.goToSecondLevel();
+    }
   }
 
   preload() {
