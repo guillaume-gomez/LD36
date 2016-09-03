@@ -29,6 +29,7 @@
     "yargs": "^4.6.0"
   },
   "dependencies": {
-    "phaser": "^2.4.7"
+    "phaser": "^2.4.7",
+    "phaser-state-transition": "^2.3.2"
   }
 }
