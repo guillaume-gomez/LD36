@@ -1,17 +1,22 @@
-import { StringDialog } from '../Constants.js';
+import { StringDialog, TextPosition, PositionAfterComputer } from '../Constants.js';
 import Character from 'objects/Character';
-
-const TextPosition = {
-  x: 100,
-  y: 20,
-  x0: 0,
-  y0: 400,
-  x1:200,
-  y1: 100
-};
 
 class GameState extends Phaser.State {
 
+  constructor() {
+    super();
+    this.originalPosition = { x:0, y:0 };
+  }
+
+  init(shouldReload = true) {
+    if(!shouldReload) {
+      this.originalPosition.x = PositionAfterComputer.x;
+      this.originalPosition.y = PositionAfterComputer.y;
+    } else {
+      this.originalPosition.x = 20;
+      this.originalPosition.y = 20;
+    }
+  }
   create() {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     // Add the physics engine to all game objects
@@ -26,7 +31,7 @@ class GameState extends Phaser.State {
 
     this.computer = this.game.add.sprite(300, 382, "computer");
 
-    this.hero = new Character(this.game, 20 , 20, "test", 0);
+    this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);
     this.game.add.existing(this.hero);
     this.game.camera.follow(this.hero);
 
@@ -38,6 +43,7 @@ class GameState extends Phaser.State {
     this.text.setTextBounds(TextPosition.x0, TextPosition.y0, TextPosition.x1, TextPosition.y1);
     this.text.visible = false;
   }
+
 
   update() {
     this.game.physics.arcade.collide(this.hero, this.layer);
@@ -58,6 +64,10 @@ class GameState extends Phaser.State {
       this.game.goToScreenMode();
     }
   }
+
+  // render() {
+  //   this.game.debug.spriteInfo(this.hero, 32, 400);
+  // }
 
 }
 
