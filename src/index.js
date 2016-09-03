@@ -14,6 +14,11 @@ class Game extends Phaser.Game {
     this.state.start('ComputerScreen');
   }
 
+  goToMainGame() {
+    const shouldReload = false;
+    this.state.start('GameState', false, false, shouldReload);
+  }
+
 }
 
 new Game();
