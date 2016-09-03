@@ -15,7 +15,7 @@ class RoomToTypeRecorder extends Phaser.State {
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
 
-    this.typeRecorder = this.game.add.sprite(1500, 382, "typeRecorder");
+    this.typeRecorder = this.game.add.sprite(1400, 382, "typeRecorder");
 
     this.hero = new Character(this.game, 1550 , 325, "test", 0);
     this.game.add.existing(this.hero);
@@ -46,7 +46,7 @@ class RoomToTypeRecorder extends Phaser.State {
   }
 
   writeCode() {
-
+    this.game.goToTypeRecordScreen();
   }
 }
 
