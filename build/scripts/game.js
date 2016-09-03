@@ -45,7 +45,96 @@ var Game = function (_Phaser$Game) {
 
 new Game();
 
-},{"states/GameState":3}],2:[function(require,module,exports){
+},{"states/GameState":4}],2:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
+var Character = function (_Phaser$Sprite) {
+  _inherits(Character, _Phaser$Sprite);
+
+  function Character(game, x, y, key, frame) {
+    _classCallCheck(this, Character);
+
+    //Enable physics on the player
+    var _this = _possibleConstructorReturn(this, (Character.__proto__ || Object.getPrototypeOf(Character)).call(this, game, x, y, key, frame));
+
+    game.physics.arcade.enable(_this);
+    //this.player.body.gravity.y = 600;
+    //no rebound after colission
+    //this.body.bounce.x = this.body.bounce.y = 0;
+    _this.cursor = game.input.keyboard.createCursorKeys();
+    //  const leftArray = [4, 5, 6, 7];
+    //  const rightArray = [12, 13, 14, 15];
+    //  const JumpArray = [1,2,3,4];
+
+    // this.animations.add('jump', JumpArray, 10, true);
+    // this.animations.add('left', leftArray, 10, true);
+    // this.animations.add('right', rightArray, 10, true);
+    return _this;
+  }
+
+  _createClass(Character, [{
+    key: "onStart",
+    value: function onStart() {}
+  }, {
+    key: "update",
+    value: function update() {
+      if (this.cursor.left.isDown) {
+        this.body.velocity.x = -200;
+        //this.animations.play("left", 45, true);
+      } else if (this.cursor.right.isDown) {
+        this.body.velocity.x = 200;
+        //this.animations.play("right", 45, true);
+      } else {
+        this.body.velocity.x = 0;
+        // this.animations.stop('jump');
+        // this.animations.stop('left');
+        // this.animations.stop('right');
+      }
+      // Make the player jump if he is touching the ground
+      if (this.cursor.up.isDown && this.body.touching.down) {
+        this.body.velocity.y = -250;
+      }
+    }
+  }]);
+
+  return Character;
+}(Phaser.Sprite);
+
+exports.default = Character;
+
+},{}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -126,71 +215,88 @@ var RainbowText = function (_Phaser$Text) {
 
 exports.default = RainbowText;
 
-},{}],3:[function(require,module,exports){
-"use strict";
+},{}],4:[function(require,module,exports){
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _createClass = function () {
-	function defineProperties(target, props) {
-		for (var i = 0; i < props.length; i++) {
-			var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-		}
-	}return function (Constructor, protoProps, staticProps) {
-		if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	};
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
 }();
 
-var _RainbowText = require("objects/RainbowText");
+var _RainbowText = require('objects/RainbowText');
 
 var _RainbowText2 = _interopRequireDefault(_RainbowText);
 
+var _Character = require('objects/Character');
+
+var _Character2 = _interopRequireDefault(_Character);
+
 function _interopRequireDefault(obj) {
-	return obj && obj.__esModule ? obj : { default: obj };
+  return obj && obj.__esModule ? obj : { default: obj };
 }
 
 function _classCallCheck(instance, Constructor) {
-	if (!(instance instanceof Constructor)) {
-		throw new TypeError("Cannot call a class as a function");
-	}
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
 }
 
 function _possibleConstructorReturn(self, call) {
-	if (!self) {
-		throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-	}return call && (typeof call === "object" || typeof call === "function") ? call : self;
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
 }
 
 function _inherits(subClass, superClass) {
-	if (typeof superClass !== "function" && superClass !== null) {
-		throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
-	}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
 var GameState = function (_Phaser$State) {
-	_inherits(GameState, _Phaser$State);
+  _inherits(GameState, _Phaser$State);
 
-	function GameState() {
-		_classCallCheck(this, GameState);
+  function GameState() {
+    _classCallCheck(this, GameState);
 
-		return _possibleConstructorReturn(this, (GameState.__proto__ || Object.getPrototypeOf(GameState)).apply(this, arguments));
-	}
+    return _possibleConstructorReturn(this, (GameState.__proto__ || Object.getPrototypeOf(GameState)).apply(this, arguments));
+  }
 
-	_createClass(GameState, [{
-		key: "create",
-		value: function create() {
-			var center = { x: this.game.world.centerX, y: this.game.world.centerY };
-			var text = new _RainbowText2.default(this.game, center.x, center.y, "- phaser -\nwith a sprinkle of\nES6 dust!");
-			text.anchor.set(0.5);
-		}
-	}]);
+  _createClass(GameState, [{
+    key: 'create',
+    value: function create() {
+      var center = { x: this.game.world.centerX, y: this.game.world.centerY };
+      var text = new _RainbowText2.default(this.game, center.x, center.y, "- phaser -\nwith a sprinkle of\nES6 dust!");
+      text.anchor.set(0.5);
 
-	return GameState;
+      this.game.physics.startSystem(Phaser.Physics.ARCADE);
+      // Add the physics engine to all game objects
+      this.game.world.enableBody = true;
+
+      var hero = new _Character2.default(this.game, 20, 20, "test", 0);
+      this.game.add.existing(hero);
+    }
+  }, {
+    key: 'preload',
+    value: function preload() {
+      this.game.load.spritesheet('hero', 'res/blue_sheet.png', 32, 32);
+      this.game.load.image("test", "res/test.png", 32, 32);
+    }
+  }]);
+
+  return GameState;
 }(Phaser.State);
 
 exports.default = GameState;
 
-},{"objects/RainbowText":2}]},{},[1])
+},{"objects/Character":2,"objects/RainbowText":3}]},{},[1])
 //# sourceMappingURL=game.js.map
