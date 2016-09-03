@@ -21,11 +21,11 @@ class Game extends Phaser.Game {
 
   goToMainGame() {
     const shouldReload = false;
-    this.state.start('GameState', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideRight, true, false, shouldReload);
+    this.state.start('GameState', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideRight, true, true, shouldReload);
   }
 
   goToSecondLevel() {
-    this.state.start('RoomToTypeRecorder', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft);
+    this.state.start('RoomToTypeRecorder', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true);
   }
 
 
