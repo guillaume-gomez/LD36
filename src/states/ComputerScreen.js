@@ -37,45 +37,25 @@ class ComputerScreen extends Phaser.State {
   }
 
   nextLine() {
-
-      if (this.lineIndex === content.length)
-      {
-        this.finish = true;
-        return;
-      }
-
-      //  Split the current line on spaces, so one word per array element
-      this.line = content[this.lineIndex].split(' ');
-
-      //  Reset the word index to zero (the first word in the line)
-      this.wordIndex = 0;
-
-      //  Call the 'nextWord' function once for each word in the line (line.length)
-      this.game.time.events.repeat(this.wordDelay, this.line.length, this.nextWord, this);
-
-      //  Advance to the next line
-      this.lineIndex++;
-
-}
+    if (this.lineIndex === content.length)
+    {
+      this.finish = true;
+      return;
+    }
+    this.line = content[this.lineIndex].split(' ');
+    this.wordIndex = 0;
+    this.game.time.events.repeat(this.wordDelay, this.line.length, this.nextWord, this);
+    this.lineIndex++;
+  }
 
   nextWord() {
-
-      //  Add the next word onto the text string, followed by a space
-      this.text.text = this.text.text.concat(this.line[this.wordIndex] + " ");
-
-      //  Advance the word index to the next word in the line
-      this.wordIndex++;
-
-      //  Last word?
-      if (this.wordIndex === this.line.length)
-      {
-          //  Add a carriage return
-          this.text.text = this.text.text.concat("\n");
-
-          //  Get the next line after the lineDelay amount of ms has elapsed
-          this.game.time.events.add(this.lineDelay, this.nextLine, this);
-      }
-
+    this.text.text = this.text.text.concat(this.line[this.wordIndex] + " ");
+    this.wordIndex++;
+    if (this.wordIndex === this.line.length)
+    {
+      this.text.text = this.text.text.concat("\n");
+      this.game.time.events.add(this.lineDelay, this.nextLine, this);
+    }
   }
 
   update() {
