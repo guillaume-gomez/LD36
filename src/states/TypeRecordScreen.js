@@ -1,17 +1,29 @@
+import { Code, Style, StyleRef } from '../Constants.js';
+
 const yPosition = 370;
 
 const leftPosition = {
   x: 203,
   y: yPosition
-}
+};
 
 const rightPosition = {
   x: 296,
   y: yPosition
-}
+};
 
 const ElapsedTime = 2000;
 const Angle = 720;
+
+const  SolutionPosition = {
+  x : 230,
+  y : 460
+};
+
+const  RefPosition = {
+  x : 150,
+  y : 305
+};
 
 class TypeRecordScreen extends Phaser.State {
 
@@ -33,6 +45,8 @@ class TypeRecordScreen extends Phaser.State {
     const buttonRewind = this.game.add.button(210, 108, 'button', this.rewind, this, 2, 1, 0);
 
     this.direction = 1;
+    this.game.add.text(RefPosition.x, RefPosition.y, "RF1D93WH6793E", StyleRef);
+    this.solution = this.game.add.text(SolutionPosition.x, SolutionPosition.y, "", Style);
   }
 
   preload() {
@@ -42,6 +56,16 @@ class TypeRecordScreen extends Phaser.State {
   }
 
   update() {
+  }
+
+  showCode() {
+    if(this.solution.text.length >= Code.length) {
+      return;
+    }
+
+    const partialCode = Code.split("",this.solution.text.length + 1);
+    this.solution.text = partialCode.join("");
+    console.log(partialCode)
   }
 
   play() {
@@ -59,6 +83,7 @@ class TypeRecordScreen extends Phaser.State {
       const tween2 = this.game.add.tween(this.rotatorRight).to( { angle: -Angle }, ElapsedTime, Phaser.Easing.Linear.None, true);
       tween.onComplete.add(this.completedRewind, this);
       tween2.onComplete.add(this.completedRewind, this);
+      this.showCode();
     }
   }
 
