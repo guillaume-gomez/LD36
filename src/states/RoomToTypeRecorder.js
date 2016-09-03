@@ -17,7 +17,7 @@ class RoomToTypeRecorder extends Phaser.State {
 
     this.typeRecorder = this.game.add.sprite(1500, 382, "typeRecorder");
 
-    this.hero = new Character(this.game, 1560 , 416, "test", 0);
+    this.hero = new Character(this.game, 1550 , 325, "test", 0);
     this.game.add.existing(this.hero);
     this.game.camera.follow(this.hero);
 
@@ -31,6 +31,9 @@ class RoomToTypeRecorder extends Phaser.State {
 
 
   update() {
+    if(this.hero.x + this.hero.body.velocity.x > 1560) {
+      this.game.goToMainGame();
+    }
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.typeRecorder, this.writeCode, null, this);
   }
@@ -45,12 +48,6 @@ class RoomToTypeRecorder extends Phaser.State {
   writeCode() {
 
   }
-
-  render() {
-    this.game.debug.spriteInfo(this.hero, 32, 400);
-  }
-
-
 }
 
 export default RoomToTypeRecorder;
