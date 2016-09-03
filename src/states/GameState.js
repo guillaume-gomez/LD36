@@ -10,10 +10,11 @@ class GameState extends Phaser.State {
     this.map = this.game.add.tilemap('Map1');
     this.map.addTilesetImage('myTileset', 'Tileset');
     this.map.setCollisionBetween(455, 469);
-    //this.map.setCollision(31, true, this.layer);
 
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
+
+    this.game.add.sprite(300, 382, "computer");
 
     this.hero = new Character(this.game, 20 , 20, "test", 0);
     this.game.add.existing(this.hero);
@@ -28,6 +29,7 @@ class GameState extends Phaser.State {
     this.game.load.spritesheet('hero', 'res/blue_sheet.png', 32, 32);
     this.game.load.image("test", "res/test.png");
     this.game.load.image('Tileset', "res/tileset.png");
+    this.game.load.image("computer", "res/computer.png");
     this.game.load.tilemap('Map1', "res/firstLevel.json", null, Phaser.Tilemap.TILED_JSON);
   }
 
