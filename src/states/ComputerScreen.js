@@ -15,6 +15,11 @@ const content = [
 
 class ComputerScreen extends Phaser.State {
 
+  constructor() {
+    super();
+    this.finish = false;
+  }
+
   create() {
     this.line = [];
 
@@ -35,6 +40,7 @@ class ComputerScreen extends Phaser.State {
 
       if (this.lineIndex === content.length)
       {
+        this.finish = true;
         return;
       }
 
@@ -73,7 +79,7 @@ class ComputerScreen extends Phaser.State {
   }
 
   update() {
-    if(this.enterButton.isDown) {
+    if(this.enterButton.isDown && this.finish) {
       this.game.goToMainGame();
     }
   }
