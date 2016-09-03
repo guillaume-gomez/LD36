@@ -26,8 +26,11 @@ class TypeRecordScreen extends Phaser.State {
     rotatorRight.anchor.setTo(0.5, 0.5);
     rotatorRight.scale.setTo(scaleRotator, scaleRotator);
 
-    this.leftRotation = this.game.add.tween(rotatorLeft).to( { angle: 360 }, 2000, Phaser.Easing.Linear.None, true);
-    this.rightRotation = this.game.add.tween(rotatorRight).to( { angle: 360 }, 2000, Phaser.Easing.Linear.None, true);
+    this.clockWiseLeft = this.game.add.tween(rotatorLeft).to( { angle: 360 }, 2000, Phaser.Easing.Linear.None, true);
+    this.counterClockWiseLeft = this.game.add.tween(rotatorLeft).to( { angle: -360 }, 2000, Phaser.Easing.Linear.None, true);
+
+    this.clockWiseRight = this.game.add.tween(rotatorRight).to( { angle: 360 }, 2000, Phaser.Easing.Linear.None, true);
+    this.counterClockWiseRight = this.game.add.tween(rotatorRight).to( { angle: -360 }, 2000, Phaser.Easing.Linear.None, true);
   }
 
   preload() {
@@ -36,8 +39,8 @@ class TypeRecordScreen extends Phaser.State {
   }
 
   update() {
-    this.leftRotation.start();
-    this.rightRotation.start();
+    this.clockWiseLeft.start();
+    this.counterClockWiseRight.start();
   }
 
 }
