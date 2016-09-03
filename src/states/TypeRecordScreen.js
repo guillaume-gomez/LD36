@@ -31,6 +31,8 @@ class TypeRecordScreen extends Phaser.State {
 
     const button = this.game.add.button(210, 70, 'button', this.play, this, 2, 1, 0);
     const buttonRewind = this.game.add.button(210, 108, 'button', this.rewind, this, 2, 1, 0);
+
+    this.direction = 1;
   }
 
   preload() {
@@ -43,13 +45,29 @@ class TypeRecordScreen extends Phaser.State {
   }
 
   play() {
-    this.game.add.tween(this.rotatorLeft).to( { angle: Angle }, ElapsedTime, Phaser.Easing.Linear.None, true, false);
-    this.game.add.tween(this.rotatorRight).to( { angle: Angle }, ElapsedTime, Phaser.Easing.Linear.None, true);
+    if(this.direction === 1) {
+      const tween = this.game.add.tween(this.rotatorLeft).to( { angle: Angle }, ElapsedTime, Phaser.Easing.Linear.None, true, false);
+      const tween2 = this.game.add.tween(this.rotatorRight).to( { angle: Angle }, ElapsedTime, Phaser.Easing.Linear.None, true);
+      tween.onComplete.add(this.completedPlay, this);
+      tween2.onComplete.add(this.completedPlay, this);
+    }
   }
 
   rewind() {
-    this.game.add.tween(this.rotatorLeft).to( { angle: -Angle }, ElapsedTime, Phaser.Easing.Linear.None, true);
-    this.game.add.tween(this.rotatorRight).to( { angle: -Angle }, ElapsedTime, Phaser.Easing.Linear.None, true);
+    if(this.direction === -1) {
+      const tween = this.game.add.tween(this.rotatorLeft).to( { angle: -Angle }, ElapsedTime, Phaser.Easing.Linear.None, true);
+      const tween2 = this.game.add.tween(this.rotatorRight).to( { angle: -Angle }, ElapsedTime, Phaser.Easing.Linear.None, true);
+      tween.onComplete.add(this.completedRewind, this);
+      tween2.onComplete.add(this.completedRewind, this);
+    }
+  }
+
+  completedRewind() {
+    this.direction = 1;
+  }
+
+  completedPlay() {
+    this.direction = -1;
   }
 
 }
