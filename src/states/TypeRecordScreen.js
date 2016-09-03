@@ -11,6 +11,7 @@ const rightPosition = {
 }
 
 const ElapsedTime = 2000;
+const Angle = 720;
 
 class TypeRecordScreen extends Phaser.State {
 
@@ -21,21 +22,15 @@ class TypeRecordScreen extends Phaser.State {
     typeRecorder.x = x;
     typeRecorder.y = y;
     const scaleRotator = 0.2;
-    let rotatorLeft = this.game.add.sprite(leftPosition.x, leftPosition.y, "rotator");
-    rotatorLeft.scale.setTo(scaleRotator, scaleRotator);
-    rotatorLeft.anchor.setTo(0.5, 0.5);
-    let rotatorRight = this.game.add.sprite(rightPosition.x, rightPosition.y, "rotator");
-    rotatorRight.anchor.setTo(0.5, 0.5);
-    rotatorRight.scale.setTo(scaleRotator, scaleRotator);
+    this.rotatorLeft = this.game.add.sprite(leftPosition.x, leftPosition.y, "rotator");
+    this.rotatorLeft.scale.setTo(scaleRotator, scaleRotator);
+    this.rotatorLeft.anchor.setTo(0.5, 0.5);
+    this.rotatorRight = this.game.add.sprite(rightPosition.x, rightPosition.y, "rotator");
+    this.rotatorRight.anchor.setTo(0.5, 0.5);
+    this.rotatorRight.scale.setTo(scaleRotator, scaleRotator);
 
-    this.clockWiseLeft = this.game.add.tween(rotatorLeft).to( { angle: 360 }, ElapsedTime, Phaser.Easing.Linear.None, true);
-    this.counterClockWiseLeft = this.game.add.tween(rotatorLeft).to( { angle: -360 }, ElapsedTime, Phaser.Easing.Linear.None, true);
-
-    this.clockWiseRight = this.game.add.tween(rotatorRight).to( { angle: 360 }, ElapsedTime, Phaser.Easing.Linear.None, true);
-    this.counterClockWiseRight = this.game.add.tween(rotatorRight).to( { angle: -360 }, ElapsedTime, Phaser.Easing.Linear.None, true);
-
-    let button = this.game.add.button(210, 70, 'button', this.play, this, 2, 1, 0);
-    let buttonRewind = this.game.add.button(210, 108, 'button', this.rewind, this, 2, 1, 0);
+    const button = this.game.add.button(210, 70, 'button', this.play, this, 2, 1, 0);
+    const buttonRewind = this.game.add.button(210, 108, 'button', this.rewind, this, 2, 1, 0);
   }
 
   preload() {
@@ -45,18 +40,16 @@ class TypeRecordScreen extends Phaser.State {
   }
 
   update() {
-    //this.clockWiseLeft.start();
-    //this.counterClockWiseRight.start();
   }
 
   play() {
-    this.clockWiseLeft.start();
-    this.clockWiseRight.start();
+    this.game.add.tween(this.rotatorLeft).to( { angle: Angle }, ElapsedTime, Phaser.Easing.Linear.None, true, false);
+    this.game.add.tween(this.rotatorRight).to( { angle: Angle }, ElapsedTime, Phaser.Easing.Linear.None, true);
   }
 
   rewind() {
-    this.counterClockWiseLeft.start();
-    this.counterClockWiseRight.start();
+    this.game.add.tween(this.rotatorLeft).to( { angle: -Angle }, ElapsedTime, Phaser.Easing.Linear.None, true);
+    this.game.add.tween(this.rotatorRight).to( { angle: -Angle }, ElapsedTime, Phaser.Easing.Linear.None, true);
   }
 
 }
