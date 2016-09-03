@@ -16,7 +16,7 @@ class Game extends Phaser.Game {
 
   goToMainGame() {
     const shouldReload = false;
-    this.state.start('GameState', false, false, shouldReload);
+    this.state.start('GameState', true, false, shouldReload);
   }
 
 }
