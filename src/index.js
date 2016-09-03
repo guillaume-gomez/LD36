@@ -28,6 +28,10 @@ class Game extends Phaser.Game {
     this.state.start('RoomToTypeRecorder', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true);
   }
 
+  goToTypeRecordScreen() {
+    this.state.start('TypeRecordScreen');
+  }
+
 
 }
 
