@@ -27,6 +27,8 @@ class ComputerScreen extends Phaser.State {
     this.text = this.game.add.text(32, 32, '', { font: "15px Arial", fill: "#19de65" });
     this.nextLine();
 
+    this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+
   }
 
   nextLine() {
@@ -71,7 +73,9 @@ class ComputerScreen extends Phaser.State {
   }
 
   update() {
-    //
+    if(this.enterButton.isDown) {
+      this.game.goToMainGame();
+    }
   }
 
 }
