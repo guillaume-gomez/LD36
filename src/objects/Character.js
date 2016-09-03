@@ -4,9 +4,8 @@ class Character extends Phaser.Sprite {
     super(game, x, y, key, frame);
     //Enable physics on the player
     game.physics.arcade.enable(this);
-    //this.player.body.gravity.y = 600;
-    //no rebound after colission
-    //this.body.bounce.x = this.body.bounce.y = 0;
+    this.body.gravity.y = 600;
+    this.body.bounce.x = this.body.bounce.y = 0;
     this.cursor = game.input.keyboard.createCursorKeys();
     //  const leftArray = [4, 5, 6, 7];
     //  const rightArray = [12, 13, 14, 15];
