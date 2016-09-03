@@ -1,5 +1,6 @@
 import GameState from 'states/GameState';
 import ComputerScreen from 'states/ComputerScreen';
+import TypeRecordScreen from 'states/TypeRecordScreen';
 
 class Game extends Phaser.Game {
 
@@ -7,7 +8,9 @@ class Game extends Phaser.Game {
     super(500, 500, Phaser.AUTO, 'content', null);
     this.state.add('GameState', GameState, false);
     this.state.add('ComputerScreen', ComputerScreen, false);
-    this.state.start('GameState');
+    this.state.add('TypeRecordScreen', TypeRecordScreen, false);
+    //this.state.start('GameState');
+    this.state.start('TypeRecordScreen');
   }
 
   goToScreenMode() {
@@ -18,6 +21,7 @@ class Game extends Phaser.Game {
     const shouldReload = false;
     this.state.start('GameState', true, false, shouldReload);
   }
+
 
 }
 
