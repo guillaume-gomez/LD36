@@ -31,15 +31,17 @@ class GameState extends Phaser.State {
     this.game.camera.follow(this.hero);
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
-    this.onComputer = false;
+
+    const style = { font: "bold 15px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+    this.text = this.game.add.text(TextPosition.x, TextPosition.y, StringDialog.onComputer, style);
+    this.text.setShadow(1, 1, 'rgba(0,0,0,0.7)', 1);
+    this.text.setTextBounds(TextPosition.x0, TextPosition.y0, TextPosition.x1, TextPosition.y1);
+    this.text.visible = false;
   }
 
   update() {
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.computer, this.writePressEnter, null, this);
-    if(this.onComputer && this.enterButton.isDown) {
-      this.game.goToScreenMode();
-    }
   }
 
   preload() {
@@ -51,14 +53,10 @@ class GameState extends Phaser.State {
   }
 
   writePressEnter() {
-    this.hero.lock();
-    this.onComputer = true;
-    const style = { font: "bold 15px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
-
-    this.text = this.game.add.text(TextPosition.x, TextPosition.y, StringDialog.onComputer, style);
-    this.text.setShadow(1, 1, 'rgba(0,0,0,0.7)', 1);
-
-    this.text.setTextBounds(TextPosition.x0, TextPosition.y0, TextPosition.x1, TextPosition.y1);
+    this.text.visible = true;
+    if(this.enterButton.isDown) {
+      this.game.goToScreenMode();
+    }
   }
 
 }
