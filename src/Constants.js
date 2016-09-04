@@ -1,6 +1,7 @@
 export const StringDialog = {
   onComputer: "Press enter to use the computer",
-  typeRecordDialog: "Press enter to leave"
+  typeRecordDialog: "Press enter to leave",
+  useTypeRecorder: "Use type recorder"
 };
 
 export const TextPosition = {
