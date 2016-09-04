@@ -29,9 +29,14 @@ class ComputerScreenVhs extends Phaser.State {
     const buttonImageByImge = this.game.add.button(OffsetX + 40, OffsetY, 'buttonImageByImge', this.imageByImage, this, 2, 1, 0);
     const buttonRestart = this.game.add.button(OffsetX + 80, OffsetY, 'buttonRestart', this.restart, this, 2, 1, 0);
     const buttonStop = this.game.add.button(OffsetX + 120, OffsetY, 'buttonStop', this.rewind, this, 2, 1, 0);
+
+    this.escapeButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
   }
 
   update() {
+    if(this.escapeButton.isDown) {
+      this.game.goToMainGame({ x:PositionAfterComputer.x, y:PositionAfterComputer.y });
+    }
   }
 
   play() {
