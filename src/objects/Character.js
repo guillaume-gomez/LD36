@@ -2,7 +2,6 @@ class Character extends Phaser.Sprite {
 
   constructor(game, x, y, key, frame) {
     super(game, x, y, key, frame);
-    console.log("Character constructor")
     //Enable physics on the player
     game.physics.arcade.enable(this);
     this.body.bounce.x = this.body.bounce.y = 0;
