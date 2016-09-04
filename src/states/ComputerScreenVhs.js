@@ -13,15 +13,15 @@ class ComputerScreenVhs extends Phaser.State {
   preload() {
     this.game.load.image("frame", "res/screen-frame.png");
     this.game.load.image("stand", "res/stand.png");
-    this.game.load.spritesheet('buttonPlay', 'res/button.png', 33, 33);
-    this.game.load.spritesheet('buttonStop', 'res/button.png', 33, 33);
-    this.game.load.spritesheet('buttonRestart', 'res/button.png', 33, 33);
-    this.game.load.spritesheet('buttonImageByImge', 'res/button.png', 33, 33);
+    this.game.load.spritesheet('buttonPlay', 'res/buttonPlay.png', 33, 33);
+    this.game.load.spritesheet('buttonStop', 'res/buttonStop.png', 33, 33);
+    this.game.load.spritesheet('buttonRestart', 'res/buttonRestart.png', 33, 33);
+    this.game.load.spritesheet('buttonImageByImge', 'res/buttonImageByImage.png', 33, 33);
     this.game.load.spritesheet('videos', "res/videos.png", 372, 292);
   }
 
   create() {
-    this.screen = this.game.add.sprite(64,50, 'videos', 2);
+    this.screen = this.game.add.sprite(64,50, 'videos', 0);
     this.anim = this.screen.animations.add('playVideo');
     this.game.add.sprite(51, 400, 'stand');
     this.game.add.sprite(0,0, "frame");
