@@ -41,8 +41,8 @@ class TypeRecordScreen extends Phaser.State {
     this.rotatorRight.anchor.setTo(0.5, 0.5);
     this.rotatorRight.scale.setTo(scaleRotator, scaleRotator);
 
-    const button = this.game.add.button(210, 70, 'button', this.play, this, 2, 1, 0);
-    const buttonRewind = this.game.add.button(210, 108, 'button', this.rewind, this, 2, 1, 0);
+    const button = this.game.add.button(210, 70, 'buttonPlay', this.play, this, 2, 1, 0);
+    const buttonRewind = this.game.add.button(210, 108, 'buttonRewind', this.rewind, this, 2, 1, 0);
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
     this.escapeButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
@@ -58,7 +58,8 @@ class TypeRecordScreen extends Phaser.State {
   preload() {
     this.game.load.image("typeRecorder", "res/type-recorder.png");
     this.game.load.image("rotator", "res/rotator.png");
-    this.game.load.spritesheet('button', 'res/button.png', 33, 33);
+    this.game.load.spritesheet('buttonPlay', 'res/button.png', 33, 33);
+    this.game.load.spritesheet('buttonRewind', 'res/button.png', 33, 33);
   }
 
   update() {
