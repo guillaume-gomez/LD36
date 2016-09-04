@@ -1,6 +1,5 @@
 import { Code, Style, StyleRef, StringDialog, TextPosition } from '../Constants.js';
 
-
 const yPosition = 370;
 
 const leftPosition = {
