@@ -25,7 +25,13 @@ export const TypeRecorderPosition = {
   y: FloorY
 }
 
+export const ComputerPosition = {
+  x: 600,
+  y: FloorY
+}
+
 export const HeightTypeRecorder = 63 / 2;
+export const HeightComputer = 63 / 2;
 
 export const Code = "9356";
 export const StyleRef = { font: "bold 8px Arial", fill: "#000", boundsAlignH: "center", boundsAlignV: "middle" };

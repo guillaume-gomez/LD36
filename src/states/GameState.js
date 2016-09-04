@@ -1,4 +1,4 @@
-import { StringDialog, TextPosition, FloorY } from '../Constants.js';
+import { StringDialog, TextPosition, FloorY, ComputerPosition, HeightComputer } from '../Constants.js';
 import { OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString';
@@ -16,7 +16,7 @@ class GameState extends Phaser.State {
       this.originalPosition.y = coord.y;
     } else {
       this.originalPosition.x = 20;
-      this.originalPosition.y = 20;
+      this.originalPosition.y = FloorY;
     }
   }
   create() {
@@ -31,7 +31,7 @@ class GameState extends Phaser.State {
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
 
-    this.computer = this.game.add.sprite(300, 382, "computer");
+    this.computer = this.game.add.sprite(ComputerPosition.x, ComputerPosition.y - HeightComputer, "computer");
 
     this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);
     this.game.add.existing(this.hero);
@@ -39,7 +39,7 @@ class GameState extends Phaser.State {
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-    this.text = new InformationString(this.game, TextPosition.x, StringDialog.onComputer);
+    this.text = new InformationString(this.game, ComputerPosition.x, StringDialog.onComputer);
     this.game.add.existing(this.text);
   }
 
