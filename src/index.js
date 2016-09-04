@@ -12,20 +12,19 @@ class Game extends Phaser.Game {
     this.state.add('TypeRecordScreen', TypeRecordScreen, false);
     this.state.add('RoomToTypeRecorder', RoomToTypeRecorder, false);
     //this.state.start('GameState');
-    this.state.start('GameState');
+    this.state.start('RoomToTypeRecorder');
   }
 
   goToScreenMode() {
     this.state.start('ComputerScreen');
   }
 
-  goToMainGame() {
-    const shouldReload = false;
-    this.state.start('GameState', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideRight, true, true, shouldReload);
+  goToMainGame(params = null) {
+    this.state.start('GameState', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideRight, true, true, params);
   }
 
-  goToSecondLevel() {
-    this.state.start('RoomToTypeRecorder', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true);
+  goToSecondLevel(params = null) {
+    this.state.start('RoomToTypeRecorder', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
   }
 
   goToTypeRecordScreen() {
