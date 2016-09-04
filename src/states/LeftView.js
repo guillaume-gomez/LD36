@@ -3,7 +3,7 @@ import { OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
 
-class RoomToTypeRecorder extends Phaser.State {
+class LeftView extends Phaser.State {
 
  constructor() {
     super();
@@ -67,4 +67,4 @@ class RoomToTypeRecorder extends Phaser.State {
   }
 }
 
-export default RoomToTypeRecorder;
+export default LeftView;

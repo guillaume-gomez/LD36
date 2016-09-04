@@ -1,18 +1,18 @@
-import GameState from 'states/GameState';
+import MainView from 'states/MainView';
 import ComputerScreen from 'states/ComputerScreen';
 import TypeRecordScreen from 'states/TypeRecordScreen';
-import RoomToTypeRecorder from 'states/RoomToTypeRecorder';
+import LeftView from 'states/LeftView';
 
 class Game extends Phaser.Game {
 
   constructor() {
     super(500, 500, Phaser.AUTO, 'content', null);
-    this.state.add('GameState', GameState, false);
+    this.state.add('MainView', MainView, false);
     this.state.add('ComputerScreen', ComputerScreen, false);
     this.state.add('TypeRecordScreen', TypeRecordScreen, false);
-    this.state.add('RoomToTypeRecorder', RoomToTypeRecorder, false);
-    //this.state.start('GameState');
-    this.state.start('RoomToTypeRecorder');
+    this.state.add('LeftView', LeftView, false);
+    this.state.start('MainView');
+    //this.state.start('LeftView');
   }
 
   goToScreenMode() {
@@ -20,11 +20,15 @@ class Game extends Phaser.Game {
   }
 
   goToMainGame(params = null) {
-    this.state.start('GameState', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideRight, true, true, params);
+    this.state.start('MainView', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideRight, true, true, params);
   }
 
   goToSecondLevel(params = null) {
-    this.state.start('RoomToTypeRecorder', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
+    this.state.start('LeftView', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
+  }
+
+  goToThirdLevel(params = null) {
+    this.state.start('LeftView', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
   }
 
   goToTypeRecordScreen() {

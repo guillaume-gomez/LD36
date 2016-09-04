@@ -3,7 +3,7 @@ import { OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString';
 
-class GameState extends Phaser.State {
+class MainView extends Phaser.State {
 
   constructor() {
     super();
@@ -73,4 +73,4 @@ class GameState extends Phaser.State {
 
 }
 
-export default GameState;
+export default MainView;
