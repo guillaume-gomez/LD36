@@ -2,6 +2,7 @@ import MainView from 'states/MainView';
 import ComputerScreen from 'states/ComputerScreen';
 import TypeRecordScreen from 'states/TypeRecordScreen';
 import LeftView from 'states/LeftView';
+import RightView from 'states/RightView';
 
 class Game extends Phaser.Game {
 
@@ -11,7 +12,8 @@ class Game extends Phaser.Game {
     this.state.add('ComputerScreen', ComputerScreen, false);
     this.state.add('TypeRecordScreen', TypeRecordScreen, false);
     this.state.add('LeftView', LeftView, false);
-    this.state.start('MainView');
+    this.state.add('RightView', RightView, false);
+    this.state.start('RightView');
     //this.state.start('LeftView');
   }
 
@@ -28,7 +30,7 @@ class Game extends Phaser.Game {
   }
 
   goToThirdLevel(params = null) {
-    this.state.start('LeftView', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
+    this.state.start('RightView', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
   }
 
   goToTypeRecordScreen() {
