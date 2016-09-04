@@ -32,6 +32,10 @@ class ComputerScreen extends Phaser.State {
     this.finish = false;
   }
 
+  preload() {
+    this.game.load.image("frame", "res/screen-frame.png");
+  }
+
   create() {
     this.line = [];
 
@@ -41,8 +45,10 @@ class ComputerScreen extends Phaser.State {
     this.wordDelay = 100;
     this.lineDelay = 300;
 
-    this.text = this.game.add.text(32, 32, '', { font: "15px Arial", fill: "#19de65" });
+    this.text = this.game.add.text(80, 70, '', { font: "15px Arial", fill: "#19de65" });
     this.nextLine();
+
+    this.game.add.sprite(0,0, "frame");
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
