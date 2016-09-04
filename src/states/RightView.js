@@ -2,6 +2,9 @@ import { TextPosition, StringDialog, FloorY, HeightTypeRecorder, DoorPosition } 
 import { OnLeftOfLayer, OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
+import CodeUI from "objects/CodeUI.js";
+
+const OffsetPwdUi = 100;
 
 class RightView extends Phaser.State {
 
@@ -41,6 +44,13 @@ class RightView extends Phaser.State {
 
     this.text = new InformationString(this.game, DoorPosition.x, StringDialog.typePassword);
     this.game.add.existing(this.text);
+
+    const fn = () => {
+      this.door.kill();
+    };
+
+    this.passwordUI = new CodeUI(this.game, DoorPosition.x + OffsetPwdUi, fn);
+    this.game.add.existing(this.passwordUI);
   }
 
 
@@ -61,6 +71,7 @@ class RightView extends Phaser.State {
 
   displayTextPassword() {
     this.text.blink();
+    this.passwordUI.showText();
     // if(this.enterButton.isDown) {
     //   this.game.goToTypeRecordScreen();
     // }
