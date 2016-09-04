@@ -1,5 +1,6 @@
-import { TextPosition, StringDialog, Style } from '../Constants.js';
+import { TextPosition, StringDialog } from '../Constants.js';
 import Character from 'objects/Character';
+import InformationString from 'objects/InformationString.js';
 
 class RoomToTypeRecorder extends Phaser.State {
 
@@ -23,10 +24,8 @@ class RoomToTypeRecorder extends Phaser.State {
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-    this.text = this.game.add.text(1400, TextPosition.y, StringDialog.useTypeRecorder, Style);
-    this.text.setShadow(1, 1, 'rgba(0,0,0,0.7)', 1);
-    this.text.setTextBounds(TextPosition.x0, TextPosition.y0, TextPosition.x1, TextPosition.y1);
-    this.text.visible = false;
+    this.text = new InformationString(this.game, 1400, StringDialog.useTypeRecorder);
+    this.game.add.existing(this.text);
   }
 
 
@@ -46,7 +45,7 @@ class RoomToTypeRecorder extends Phaser.State {
   }
 
   displayTextTypeRecorder() {
-    this.text.visible = true;
+    this.text.blink();
     if(this.enterButton.isDown) {
       this.game.goToTypeRecordScreen();
     }
