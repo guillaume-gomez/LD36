@@ -13,7 +13,7 @@ export const TextPosition = {
   y1: 100
 };
 
-export const FloorY = TextPosition.y0 + 20;
+export const FloorY = TextPosition.y0 + 17;
 
 export const PositionAfterComputer = {
   x: TextPosition.x1 + 80,

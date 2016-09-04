@@ -2,12 +2,14 @@ class Character extends Phaser.Sprite {
 
   constructor(game, x, y, key, frame) {
     super(game, x, y, key, frame);
+    console.log("Character constructor")
     //Enable physics on the player
     game.physics.arcade.enable(this);
-    this.body.gravity.y = 600;
     this.body.bounce.x = this.body.bounce.y = 0;
     this.cursor = game.input.keyboard.createCursorKeys();
     this.locked = false;
+    const fn = () => {this.body.gravity.y = 500;};
+    setTimeout(fn, 500);
     //  const leftArray = [4, 5, 6, 7];
     //  const rightArray = [12, 13, 14, 15];
     //  const JumpArray = [1,2,3,4];
