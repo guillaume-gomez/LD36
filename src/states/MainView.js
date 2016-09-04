@@ -1,5 +1,5 @@
 import { StringDialog, TextPosition, FloorY, ComputerPosition, HeightComputer } from '../Constants.js';
-import { OnRightOfLayer } from '../ConstantsHeroPosition.js';
+import { OnRightOfLayer, OnLeftOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString';
 
@@ -49,6 +49,9 @@ class MainView extends Phaser.State {
     this.game.physics.arcade.overlap(this.hero, this.computer, this.writePressEnter, null, this);
     if(this.hero.x < 0) {
       this.game.goToSecondLevel(OnRightOfLayer);
+    }
+    if(this.hero.x + this.hero.width > this.game.world.width) {
+      this.game.goToThirdLevel(OnLeftOfLayer)
     }
   }
 
