@@ -13,6 +13,18 @@ const content = [
     "Press Enter to leave the computer"
 ];
 
+const frament = [
+"uniform sampler2D tex0;",
+"uniform sampler2D tex1;",
+"",
+"void main()",
+"{",
+"    vec4 t0 = texture2D(tex0, gl_TexCoord[0].st);",
+"    vec4 t1 = texture2D(tex1, gl_TexCoord[0].st);",
+"    gl_FragColor = mix(t0, t1, t1.a);",
+"}"
+];
+
 class ComputerScreen extends Phaser.State {
 
   constructor() {
