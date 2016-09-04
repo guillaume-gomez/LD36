@@ -4,6 +4,7 @@ import TypeRecordScreen from 'states/TypeRecordScreen';
 import LeftView from 'states/LeftView';
 import RightView from 'states/RightView';
 import VhsView from 'states/VhsView';
+import ComputerScreenVhs from 'states/ComputerScreenVhs';
 
 class Game extends Phaser.Game {
 
@@ -15,6 +16,7 @@ class Game extends Phaser.Game {
     this.state.add('LeftView', LeftView, false);
     this.state.add('RightView', RightView, false);
     this.state.add('VhsView', VhsView, false);
+    this.state.add('ComputerScreenVhs', ComputerScreenVhs, false);
     this.state.start('VhsView');
 
     this.hasVHS = false;
@@ -39,6 +41,10 @@ class Game extends Phaser.Game {
 
   goToTypeRecordScreen() {
     this.state.start('TypeRecordScreen');
+  }
+
+  goToVHSScreen() {
+    this.state.start('VhsView');
   }
 
 

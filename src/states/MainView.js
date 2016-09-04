@@ -66,7 +66,11 @@ class MainView extends Phaser.State {
   writePressEnter() {
     this.text.blink();
     if(this.enterButton.isDown) {
-      this.game.goToScreenMode();
+      if(!this.game.hasVHS) {
+        this.game.goToScreenMode();
+      } else {
+        this.game.goToVHSScreen();
+      }
     }
   }
 
