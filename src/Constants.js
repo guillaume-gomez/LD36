@@ -26,11 +26,15 @@ export const ComputerPosition = {
   y: FloorY
 }
 
-
 export const PositionAfterComputer = {
   x: 600,
   y: FloorY
 };
+
+export const DoorPosition = {
+  x: 200,
+  y: FloorY - 64/2
+}
 
 
 export const HeightTypeRecorder = 63 / 2;

@@ -1,4 +1,4 @@
-import { TextPosition, StringDialog, FloorY, HeightTypeRecorder } from '../Constants.js';
+import { TextPosition, StringDialog, FloorY, HeightTypeRecorder, DoorPosition } from '../Constants.js';
 import { OnLeftOfLayer, OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
@@ -35,9 +35,11 @@ class RightView extends Phaser.State {
     this.game.add.existing(this.hero);
     this.game.camera.follow(this.hero);
 
+    this.door = this.game.add.sprite(DoorPosition.x, DoorPosition.y, "Door");
+
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-    this.text = new InformationString(this.game, 1300, StringDialog.TypePassWord);
+    this.text = new InformationString(this.game, DoorPosition.x, StringDialog.typePassword);
     this.game.add.existing(this.text);
   }
 
@@ -47,20 +49,21 @@ class RightView extends Phaser.State {
       this.game.goToMainGame(OnRightOfLayer);
     }
     this.game.physics.arcade.collide(this.hero, this.layer);
-    //this.game.physics.arcade.overlap(this.hero, this.typeRecorder, this.displayTextTypeRecorder, null, this);
+    this.game.physics.arcade.overlap(this.hero, this.door, this.displayTextPassword, null, this);
   }
 
   preload() {
     this.game.load.image("test", "res/test.png");
     this.game.load.image('Tileset', "res/tileset.png");
+    this.game.load.image('Door',"res/door.png")
     this.game.load.tilemap('Map3', "res/ThirdLevel.json", null, Phaser.Tilemap.TILED_JSON);
   }
 
-  displayTextTypeRecorder() {
+  displayTextPassword() {
     this.text.blink();
-    if(this.enterButton.isDown) {
-      this.game.goToTypeRecordScreen();
-    }
+    // if(this.enterButton.isDown) {
+    //   this.game.goToTypeRecordScreen();
+    // }
   }
 }
 
