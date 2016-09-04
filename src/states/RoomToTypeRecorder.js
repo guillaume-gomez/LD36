@@ -1,4 +1,5 @@
 import { TextPosition, StringDialog, FloorY, TypeRecorderPosition, HeightTypeRecorder } from '../Constants.js';
+import { OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
 
@@ -14,8 +15,7 @@ class RoomToTypeRecorder extends Phaser.State {
       this.originalPosition.x = params.x;
       this.originalPosition.y = params.y;
     } else {
-      this.originalPosition.x = 1400;
-      this.originalPosition.y = FloorY;
+      this.originalPosition = OnRightOfLayer;
     }
   }
 

@@ -1,4 +1,5 @@
 import { StringDialog, TextPosition, FloorY } from '../Constants.js';
+import { OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString';
 
@@ -47,7 +48,7 @@ class GameState extends Phaser.State {
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.computer, this.writePressEnter, null, this);
     if(this.hero.x < 0) {
-      this.game.goToSecondLevel({ x: 1550 ,y: FloorY });
+      this.game.goToSecondLevel(OnRightOfLayer);
     }
   }
 
