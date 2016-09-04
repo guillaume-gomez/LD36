@@ -3,6 +3,7 @@ import ComputerScreen from 'states/ComputerScreen';
 import TypeRecordScreen from 'states/TypeRecordScreen';
 import LeftView from 'states/LeftView';
 import RightView from 'states/RightView';
+import VhsView from 'states/VhsView';
 
 class Game extends Phaser.Game {
 
@@ -13,7 +14,10 @@ class Game extends Phaser.Game {
     this.state.add('TypeRecordScreen', TypeRecordScreen, false);
     this.state.add('LeftView', LeftView, false);
     this.state.add('RightView', RightView, false);
-    this.state.start('RightView');
+    this.state.add('VhsView', VhsView, false);
+    this.state.start('VhsView');
+
+    this.hasVHS = false;
     //this.state.start('LeftView');
   }
 
