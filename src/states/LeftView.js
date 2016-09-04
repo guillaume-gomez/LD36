@@ -1,5 +1,5 @@
 import { TextPosition, StringDialog, FloorY, TypeRecorderPosition, HeightTypeRecorder } from '../Constants.js';
-import { OnRightOfLayer } from '../ConstantsHeroPosition.js';
+import { OnRightOfLayer, OnLeftOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
 
@@ -46,7 +46,7 @@ class LeftView extends Phaser.State {
 
   update() {
     if(this.hero.x + this.hero.width > this.game.world.width) {
-      this.game.goToMainGame({ x: 10, y: FloorY });
+      this.game.goToMainGame(OnLeftOfLayer);
     }
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.typeRecorder, this.displayTextTypeRecorder, null, this);
