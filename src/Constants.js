@@ -15,11 +15,6 @@ export const TextPosition = {
 
 export const FloorY = TextPosition.y0 + 17;
 
-export const PositionAfterComputer = {
-  x: TextPosition.x1 + 80,
-  y: FloorY
-};
-
 export const TypeRecorderPosition = {
   x: 1400,
   y: FloorY
@@ -29,6 +24,13 @@ export const ComputerPosition = {
   x: 600,
   y: FloorY
 }
+
+
+export const PositionAfterComputer = {
+  x: 600,
+  y: FloorY
+};
+
 
 export const HeightTypeRecorder = 63 / 2;
 export const HeightComputer = 63 / 2;
