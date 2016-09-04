@@ -39,6 +39,7 @@ class RightView extends Phaser.State {
     this.game.camera.follow(this.hero);
 
     this.door = this.game.add.sprite(DoorPosition.x, DoorPosition.y, "Door");
+    this.door.body.immovable = true;
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
@@ -59,7 +60,7 @@ class RightView extends Phaser.State {
       this.game.goToMainGame(OnRightOfLayer);
     }
     this.game.physics.arcade.collide(this.hero, this.layer);
-    this.game.physics.arcade.overlap(this.hero, this.door, this.displayTextPassword, null, this);
+    this.game.physics.arcade.collide(this.hero, this.door, this.displayTextPassword, null, this);
   }
 
   preload() {
@@ -72,9 +73,6 @@ class RightView extends Phaser.State {
   displayTextPassword() {
     this.text.blink();
     this.passwordUI.showText();
-    // if(this.enterButton.isDown) {
-    //   this.game.goToTypeRecordScreen();
-    // }
   }
 }
 
