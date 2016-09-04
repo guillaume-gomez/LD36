@@ -13,9 +13,11 @@ export const TextPosition = {
   y1: 100
 };
 
+export const FloorY = TextPosition.y0 + 20;
+
 export const PositionAfterComputer = {
   x: TextPosition.x1 + 80,
-  y: TextPosition.y0 + 20
+  y: FloorY
 };
 
 export const Code = "9356";
