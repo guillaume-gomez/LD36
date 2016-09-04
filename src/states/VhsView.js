@@ -38,7 +38,7 @@ class VhsView extends Phaser.State {
 
     this.vhs = this.game.add.sprite(VhsPosition.x, VhsPosition.y, "Vhs");
 
-    this.text = new InformationString(this.game, VhsPosition.x, StringDialog.vhsPicked);
+    this.text = new InformationString(this.game, VhsPosition.x, StringDialog.vhsPicked, 3000);
     this.game.add.existing(this.text);
 
   }
