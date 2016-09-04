@@ -1,4 +1,4 @@
-import { Code, Style, StyleRef, StringDialog, TextPosition } from '../Constants.js';
+import { Code, Style, StyleRef, StringDialog, TextPosition, TypeRecorderPosition } from '../Constants.js';
 
 const yPosition = 370;
 
@@ -63,10 +63,10 @@ class TypeRecordScreen extends Phaser.State {
 
   update() {
     if(this.solution.text.length === Code.length && this.enterButton.isDown) {
-      this.game.goToSecondLevel();
+      this.game.goToSecondLevel(TypeRecorderPosition);
     }
     if(this.escapeButton.isDown) {
-      this.game.goToSecondLevel();
+      this.game.goToSecondLevel(TypeRecorderPosition);
     }
   }
 

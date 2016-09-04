@@ -1,4 +1,4 @@
-//import {} from '../Constants.js';
+import { PositionAfterComputer } from '../Constants.js';
 
 const content = [
     "The sky above the port was the color of television,",
@@ -72,7 +72,7 @@ class ComputerScreen extends Phaser.State {
 
   update() {
     if(this.enterButton.isDown && this.finish) {
-      this.game.goToMainGame();
+      this.game.goToMainGame({x: PositionAfterComputer.x, y: PositionAfterComputer.y});
     }
   }
 

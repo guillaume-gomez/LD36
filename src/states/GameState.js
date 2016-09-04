@@ -1,4 +1,4 @@
-import { StringDialog, TextPosition, PositionAfterComputer } from '../Constants.js';
+import { StringDialog, TextPosition, FloorY } from '../Constants.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString';
 
@@ -9,10 +9,10 @@ class GameState extends Phaser.State {
     this.originalPosition = { x:0, y:0 };
   }
 
-  init(shouldReload = true) {
-    if(!shouldReload) {
-      this.originalPosition.x = PositionAfterComputer.x;
-      this.originalPosition.y = PositionAfterComputer.y;
+  init(coord) {
+    if(coord) {
+      this.originalPosition.x = coord.x;
+      this.originalPosition.y = coord.y;
     } else {
       this.originalPosition.x = 20;
       this.originalPosition.y = 20;
@@ -47,7 +47,7 @@ class GameState extends Phaser.State {
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.computer, this.writePressEnter, null, this);
     if(this.hero.x < 0) {
-      this.game.goToSecondLevel();
+      this.game.goToSecondLevel({ x: 1550 ,y: FloorY });
     }
   }
 

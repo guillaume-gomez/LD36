@@ -1,8 +1,23 @@
-import { TextPosition, StringDialog } from '../Constants.js';
+import { TextPosition, StringDialog, FloorY, TypeRecorderPosition, HeightTypeRecorder } from '../Constants.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
 
 class RoomToTypeRecorder extends Phaser.State {
+
+ constructor() {
+    super();
+    this.originalPosition = { x:0, y:0 };
+  }
+
+  init(params = null) {
+    if(params) {
+      this.originalPosition.x = params.x;
+      this.originalPosition.y = params.y;
+    } else {
+      this.originalPosition.x = 1400;
+      this.originalPosition.y = FloorY;
+    }
+  }
 
   create() {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -16,22 +31,22 @@ class RoomToTypeRecorder extends Phaser.State {
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
 
-    this.typeRecorder = this.game.add.sprite(1400, 382, "typeRecorder");
+    this.typeRecorder = this.game.add.sprite(TypeRecorderPosition.x, TypeRecorderPosition.y - HeightTypeRecorder, "typeRecorder");
 
-    this.hero = new Character(this.game, 1550 , 325, "test", 0);
+    this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);
     this.game.add.existing(this.hero);
     this.game.camera.follow(this.hero);
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-    this.text = new InformationString(this.game, 1400, StringDialog.useTypeRecorder);
+    this.text = new InformationString(this.game, TypeRecorderPosition.x, StringDialog.useTypeRecorder);
     this.game.add.existing(this.text);
   }
 
 
   update() {
-    if(this.hero.x + this.hero.body.velocity.x > 1560) {
-      this.game.goToMainGame();
+    if(this.hero.x + this.hero.width > this.game.world.width) {
+      this.game.goToMainGame({ x: 10, y: FloorY });
     }
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.typeRecorder, this.displayTextTypeRecorder, null, this);
