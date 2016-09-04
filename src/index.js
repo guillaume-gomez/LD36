@@ -1,4 +1,5 @@
 import MainView from 'states/MainView';
+import MainMenu from 'states/MainMenu';
 import ComputerScreen from 'states/ComputerScreen';
 import TypeRecordScreen from 'states/TypeRecordScreen';
 import LeftView from 'states/LeftView';
@@ -10,6 +11,7 @@ class Game extends Phaser.Game {
 
   constructor() {
     super(500, 500, Phaser.AUTO, 'content', null);
+    this.state.add('MainMenu', MainMenu, false);
     this.state.add('MainView', MainView, false);
     this.state.add('ComputerScreen', ComputerScreen, false);
     this.state.add('TypeRecordScreen', TypeRecordScreen, false);
@@ -17,10 +19,8 @@ class Game extends Phaser.Game {
     this.state.add('RightView', RightView, false);
     this.state.add('VhsView', VhsView, false);
     this.state.add('ComputerScreenVhs', ComputerScreenVhs, false);
-    this.state.start('MainView');
-
+    this.state.start('MainMenu');
     this.hasVHS = false;
-    //this.state.start('LeftView');
   }
 
   goToScreenMode() {
