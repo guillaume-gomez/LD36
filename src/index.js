@@ -17,7 +17,7 @@ class Game extends Phaser.Game {
     this.state.add('RightView', RightView, false);
     this.state.add('VhsView', VhsView, false);
     this.state.add('ComputerScreenVhs', ComputerScreenVhs, false);
-    this.state.start('VhsView');
+    this.state.start('MainView');
 
     this.hasVHS = false;
     //this.state.start('LeftView');
@@ -28,15 +28,15 @@ class Game extends Phaser.Game {
   }
 
   goToMainGame(params = null) {
-    this.state.start('MainView', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideRight, true, true, params);
+    this.state.start('MainView', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
   }
 
   goToSecondLevel(params = null) {
-    this.state.start('LeftView', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
+    this.state.start('LeftView', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideRight, true, true, params);
   }
 
   goToThirdLevel(params = null) {
-    this.state.start('RightView', Phaser.Plugin.StateTransition.Out.SlideRight, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
+    this.state.start('RightView', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
   }
 
   goToTypeRecordScreen() {
