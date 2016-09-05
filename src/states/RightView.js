@@ -38,8 +38,10 @@ class RightView extends Phaser.State {
     this.game.add.existing(this.hero);
     this.game.camera.follow(this.hero);
 
-    this.door = this.game.add.sprite(DoorPosition.x, DoorPosition.y, "Door");
-    this.door.body.immovable = true;
+    if(!this.game.doorOpened) {
+      this.door = this.game.add.sprite(DoorPosition.x, DoorPosition.y, "Door");
+      this.door.body.immovable = true;
+    }
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
@@ -48,6 +50,7 @@ class RightView extends Phaser.State {
 
     const fn = () => {
       this.door.kill();
+      this.game.doorOpened = true;
     };
 
     this.passwordUI = new CodeUI(this.game, DoorPosition.x + OffsetPwdUi, fn);
