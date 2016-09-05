@@ -19,7 +19,7 @@ class Game extends Phaser.Game {
     this.state.add('RightView', RightView, false);
     this.state.add('VhsView', VhsView, false);
     this.state.add('ComputerScreenVhs', ComputerScreenVhs, false);
-    this.state.start('MainMenu');
+    this.state.start('MainView');
     this.hasVHS = true  ;
   }
 
@@ -45,6 +45,10 @@ class Game extends Phaser.Game {
 
   goToVHSScreen() {
     this.state.start('ComputerScreenVhs');
+  }
+
+  goToFourthScreen(params = null) {
+    this.state.start('VhsView', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
   }
 
 
