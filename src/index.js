@@ -20,7 +20,7 @@ class Game extends Phaser.Game {
     this.state.add('VhsView', VhsView, false);
     this.state.add('ComputerScreenVhs', ComputerScreenVhs, false);
     this.state.start('MainMenu');
-    this.hasVHS = false;
+    this.hasVHS = true  ;
   }
 
   goToScreenMode() {
@@ -44,7 +44,7 @@ class Game extends Phaser.Game {
   }
 
   goToVHSScreen() {
-    this.state.start('VhsView');
+    this.state.start('ComputerScreenVhs');
   }
 
 
