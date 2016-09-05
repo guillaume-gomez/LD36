@@ -58,8 +58,8 @@ class TypeRecordScreen extends Phaser.State {
   preload() {
     this.game.load.image("typeRecorder", "res/type-recorder.png");
     this.game.load.image("rotator", "res/rotator.png");
-    this.game.load.spritesheet('buttonPlay', 'res/button.png', 33, 33);
-    this.game.load.spritesheet('buttonRewind', 'res/button.png', 33, 33);
+    this.game.load.spritesheet('buttonPlay', 'res/buttonPlayTypeRecorder.png', 33, 33);
+    this.game.load.spritesheet('buttonRewind', 'res/buttonRewindTypeRecorder.png', 33, 33);
   }
 
   update() {
