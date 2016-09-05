@@ -15,7 +15,7 @@ class LeftView extends Phaser.State {
       this.originalPosition.x = params.x;
       this.originalPosition.y = params.y;
     } else {
-      this.originalPosition = OnRightOfLayer;
+      this.originalPosition = Object.assign( {}, OnRightOfLayer);
     }
   }
 

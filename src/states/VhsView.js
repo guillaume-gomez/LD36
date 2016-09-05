@@ -8,7 +8,7 @@ class VhsView extends Phaser.State {
 
  constructor() {
     super();
-    this.originalPosition = OnLeftOfLayer;
+    this.originalPosition = Object.assign( {}, OnLeftOfLayer);
   }
 
   init(params = null) {
@@ -16,7 +16,7 @@ class VhsView extends Phaser.State {
       this.originalPosition.x = params.x;
       this.originalPosition.y = params.y;
     } else {
-      this.originalPosition = OnLeftOfLayer;
+      this.originalPosition = Object.assign( {}, OnLeftOfLayer);
     }
   }
 
