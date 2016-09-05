@@ -55,7 +55,7 @@ class LeftView extends Phaser.State {
   preload() {
     this.game.load.image("test", "res/test.png");
     this.game.load.image('Tileset', "res/tileset.png");
-    this.game.load.image("typeRecorder", "res/computer.png");
+    this.game.load.image("typeRecorder", "res/type-recorder-min.png");
     this.game.load.tilemap('Map2', "res/secondLevel.json", null, Phaser.Tilemap.TILED_JSON);
   }
 

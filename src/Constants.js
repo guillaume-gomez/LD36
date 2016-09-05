@@ -42,8 +42,8 @@ export const VhsPosition = {
   y: FloorY - 64/2
 }
 
-
-export const HeightTypeRecorder = 63 / 2;
+export const offsetTypeRecorderImg = 10;
+export const HeightTypeRecorder = (52 - offsetTypeRecorderImg) / 2;
 export const HeightComputer = 63 / 2;
 
 export const Code = "9356";
