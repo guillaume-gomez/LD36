@@ -59,6 +59,9 @@ class RightView extends Phaser.State {
     if(this.hero.x < 0 ) {
       this.game.goToMainGame(OnRightOfLayer);
     }
+    if(this.hero.x + this.hero.width > this.game.world.width) {
+      this.game.goToFourthScreen(OnLeftOfLayer);
+    }
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.collide(this.hero, this.door, this.displayTextPassword, null, this);
   }
