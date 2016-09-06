@@ -34,6 +34,8 @@ class RightView extends Phaser.State {
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
 
+    this.ladder = this.game.add.sprite(32,216, "Ladder");
+
     this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);
     this.game.add.existing(this.hero);
     this.game.camera.follow(this.hero);
@@ -73,6 +75,7 @@ class RightView extends Phaser.State {
     this.game.load.image("test", "res/test.png");
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image('Door',"res/door.png");
+    this.game.load.image('Ladder', "res/ladder.png")
     this.game.load.tilemap('Map3', "res/ThirdLevel.json", null, Phaser.Tilemap.TILED_JSON);
   }
 
