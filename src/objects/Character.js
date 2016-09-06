@@ -56,7 +56,6 @@ class Character extends Phaser.Sprite {
   }
 
   climbLadder() {
-    console.log("climbLadder")
     this.body.gravity.y = 0;
     this.isClimbing = true;
   }
