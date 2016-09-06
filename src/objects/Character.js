@@ -9,6 +9,7 @@ class Character extends Phaser.Sprite {
     this.locked = false;
     const fn = () => {this.body.gravity.y = 500;};
     setTimeout(fn, 500);
+    this.isClimbing = false;
     //  const leftArray = [4, 5, 6, 7];
     //  const rightArray = [12, 13, 14, 15];
     //  const JumpArray = [1,2,3,4];
@@ -41,6 +42,28 @@ class Character extends Phaser.Sprite {
     if (this.cursor.up.isDown && this.body.onFloor()) {
       this.body.velocity.y = -250;
     }
+
+    if(this.isClimbing) {
+      if(this.cursor.up.isDown) {
+        this.body.velocity.y = -150;
+      }
+      else if(this.cursor.down.isDown) {
+        this.body.velocity.y = 150;
+      } else {
+        this.body.velocity.y = 0;
+      }
+    }
+  }
+
+  climbLadder() {
+    console.log("climbLadder")
+    this.body.gravity.y = 0;
+    this.isClimbing = true;
+  }
+
+  leaveLadder() {
+    this.body.gravity.y = 500;
+    this.isClimbing = false;
   }
 
   lock() {
