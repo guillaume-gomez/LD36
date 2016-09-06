@@ -34,21 +34,20 @@ class RightView extends Phaser.State {
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
 
-    this.ladder = this.game.add.sprite(32,216, "Ladder");
-
-    this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);
-    this.game.add.existing(this.hero);
-    this.game.camera.follow(this.hero);
 
     if(!this.game.doorOpened) {
       this.door = this.game.add.sprite(DoorPosition.x, DoorPosition.y, "Door");
       this.door.body.immovable = true;
     }
 
+    this.ladder = this.game.add.sprite(32,216, "Ladder");
+    this.door.body.immovable = true;
+
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
     this.text = new InformationString(this.game, DoorPosition.x, StringDialog.typePassword);
     this.game.add.existing(this.text);
+
 
     const fn = () => {
       this.door.kill();
@@ -57,6 +56,10 @@ class RightView extends Phaser.State {
 
     this.passwordUI = new CodeUI(this.game, DoorPosition.x + OffsetPwdUi, fn);
     this.game.add.existing(this.passwordUI);
+
+    this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);
+    this.game.add.existing(this.hero);
+    this.game.camera.follow(this.hero);
   }
 
 
@@ -69,6 +72,11 @@ class RightView extends Phaser.State {
     }
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.collide(this.hero, this.door, this.displayTextPassword, null, this);
+    //my precious ladder
+    const isCollide = this.game.physics.arcade.overlap(this.hero, this.ladder, this.hero.climbLadder, null, this.hero);
+    if(!isCollide && this.hero.isClimbing == true) {
+      this.hero.leaveLadder();
+    }
   }
 
   preload() {
