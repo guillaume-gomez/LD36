@@ -77,6 +77,9 @@ class RightView extends Phaser.State {
     if(!isCollide && this.hero.isClimbing == true) {
       this.hero.leaveLadder();
     }
+    if(this.hero.isDeath()) {
+      this.goToThirdLevel(OnLeftOfLayer);
+    }
   }
 
   preload() {
