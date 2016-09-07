@@ -41,7 +41,7 @@ class RightView extends Phaser.State {
     }
 
     this.ladder = this.game.add.sprite(32,224, "Ladder");
-    this.door.body.immovable = true;
+    this.ladder.body.immovable = true;
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
