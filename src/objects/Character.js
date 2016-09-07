@@ -58,6 +58,9 @@ class Character extends Phaser.Sprite {
   }
 
   isDeath() {
+    if (!this.body) {
+      return false;
+    }
     return this.body.position.y > LimitY;
   }
 
