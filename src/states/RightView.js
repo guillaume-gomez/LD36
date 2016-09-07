@@ -78,7 +78,7 @@ class RightView extends Phaser.State {
       this.hero.leaveLadder();
     }
     if(this.hero.isDeath()) {
-      this.goToThirdLevel(OnLeftOfLayer);
+      this.game.goToThirdLevel(OnLeftOfLayer);
     }
   }
 

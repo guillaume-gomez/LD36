@@ -1,4 +1,4 @@
-const LimitY = -100;
+const LimitY = 550;
 
 class Character extends Phaser.Sprite {
 
@@ -58,7 +58,7 @@ class Character extends Phaser.Sprite {
   }
 
   isDeath() {
-    return this.body.position.y < LimitY;
+    return this.body.position.y > LimitY;
   }
 
   climbLadder() {
