@@ -40,7 +40,7 @@ class RightView extends Phaser.State {
       this.door.body.immovable = true;
     }
 
-    this.ladder = this.game.add.sprite(32,223, "Ladder");
+    this.ladder = this.game.add.sprite(32,224, "Ladder");
     this.door.body.immovable = true;
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
@@ -87,13 +87,17 @@ class RightView extends Phaser.State {
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image('Door',"res/door.png");
     this.game.load.image('Ladder', "res/ladder.png")
-    this.game.load.tilemap('Map3', "res/ThirdLevel.json", null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.tilemap('Map3', "res/rightLevel.json", null, Phaser.Tilemap.TILED_JSON);
   }
 
   displayTextPassword() {
     this.text.blink();
     this.passwordUI.showText();
   }
+
+  /*render() {
+    this.game.debug.body(this.ladder);
+  }*/
 }
 
 export default RightView;
