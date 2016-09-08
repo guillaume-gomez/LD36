@@ -33,7 +33,7 @@ export const PositionAfterComputer = {
 };
 
 export const DoorPosition = {
-  x: 1505,
+  x: 1537,
   y: FloorY - 64/2 - 1
 }
 
