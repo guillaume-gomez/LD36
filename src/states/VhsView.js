@@ -32,14 +32,17 @@ class VhsView extends Phaser.State {
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
 
-    this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);
-    this.game.add.existing(this.hero);
-    this.game.camera.follow(this.hero);
+    this.ladder = this.game.add.sprite(64,189, "Ladder");
+    this.ladder.body.immovable = true;
 
     this.vhs = this.game.add.sprite(VhsPosition.x, VhsPosition.y, "Vhs");
 
     this.text = new InformationString(this.game, VhsPosition.x, StringDialog.vhsPicked, 3000);
     this.game.add.existing(this.text);
+
+    this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);
+    this.game.add.existing(this.hero);
+    this.game.camera.follow(this.hero);
 
   }
 
@@ -50,12 +53,21 @@ class VhsView extends Phaser.State {
     }
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.vhs, this.pickVhs, null, this);
+
+    const isCollide = this.game.physics.arcade.overlap(this.hero, this.ladder, this.hero.climbLadder, null, this.hero);
+    if(!isCollide && this.hero.isClimbing == true) {
+      this.hero.leaveLadder();
+    }
+    if(this.hero.isDeath()) {
+      this.game.goToFourthScreen(OnLeftOfLayer);
+    }
   }
 
   preload() {
     this.game.load.image("test", "res/test.png");
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image('Vhs',"res/vhs.png");
+    this.game.load.image('Ladder',"res/ladder.png");
     this.game.load.tilemap('Map4', "res/ThirdLevel.json", null, Phaser.Tilemap.TILED_JSON);
   }
 
