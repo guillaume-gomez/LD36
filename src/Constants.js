@@ -39,7 +39,7 @@ export const DoorPosition = {
 
 export const VhsPosition = {
   x: 1530,
-  y: 302
+  y: 238
 }
 
 export const offsetTypeRecorderImg = 10;
