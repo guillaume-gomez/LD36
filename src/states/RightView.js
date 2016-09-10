@@ -1,4 +1,4 @@
-import { TextPosition, StringDialog, FloorY, HeightTypeRecorder, DoorPosition, Width } from '../Constants.js';
+import { TextPosition, StringDialog, FloorY, HeightTypeRecorder, DoorPosition, Width, DoorTextOffset } from '../Constants.js';
 import { OnLeftOfLayer, OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
@@ -46,7 +46,7 @@ class RightView extends Phaser.State {
 
     this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-    this.text = new InformationString(this.game, DoorPosition.x, StringDialog.typePassword);
+    this.text = new InformationString(this.game, DoorPosition.x - DoorTextOffset, StringDialog.typePassword);
     this.game.add.existing(this.text);
 
 
@@ -55,7 +55,7 @@ class RightView extends Phaser.State {
       this.game.doorOpened = true;
     };
 
-    this.passwordUI = new CodeUI(this.game, DoorPosition.x + OffsetPwdUi, fn);
+    this.passwordUI = new CodeUI(this.game, DoorPosition.x - OffsetPwdUi, fn);
     this.game.add.existing(this.passwordUI);
 
     this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);

@@ -1,4 +1,4 @@
-import { TextPosition, StringDialog, FloorY, VhsPosition } from '../Constants.js';
+import { TextPosition, StringDialog, FloorY, VhsPosition, VhsTextOffset } from '../Constants.js';
 import { OnLeftOfLayer, OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
@@ -37,7 +37,7 @@ class VhsView extends Phaser.State {
 
     this.vhs = this.game.add.sprite(VhsPosition.x, VhsPosition.y, "Vhs");
 
-    this.text = new InformationString(this.game, VhsPosition.x, StringDialog.vhsPicked, 3000);
+    this.text = new InformationString(this.game, VhsPosition.x - VhsTextOffset, StringDialog.vhsPicked, 3000);
     this.game.add.existing(this.text);
 
     this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);

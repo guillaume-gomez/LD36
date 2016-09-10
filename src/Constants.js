@@ -40,6 +40,9 @@ export const VhsPosition = {
   y: 238
 }
 
+export const DoorTextOffset = 200;
+export const VhsTextOffset = 200;
+
 export const offsetTypeRecorderImg = 10;
 export const HeightTypeRecorder = (52 - offsetTypeRecorderImg) / 2;
 export const HeightComputer = 63 / 2;
