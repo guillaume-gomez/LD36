@@ -1,4 +1,4 @@
-import { TextPosition, StringDialog, FloorY, HeightTypeRecorder, DoorPosition } from '../Constants.js';
+import { TextPosition, StringDialog, FloorY, HeightTypeRecorder, DoorPosition, Width } from '../Constants.js';
 import { OnLeftOfLayer, OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
@@ -75,7 +75,8 @@ class RightView extends Phaser.State {
     this.game.physics.arcade.collide(this.hero, this.door, this.displayTextPassword, null, this);
     collideLadder(this.game, this.hero, this.ladder);
     if(this.hero.isDeath()) {
-      this.game.goToThirdLevel(OnLeftOfLayer);
+      const position = this.originalPosition.x < (Width/2) ? OnLeftOfLayer : OnRightOfLayer;
+      this.game.goToThirdLevel(position);
     }
   }
 

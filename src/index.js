@@ -7,11 +7,12 @@ import RightView from 'states/RightView';
 import VhsView from 'states/VhsView';
 import ComputerScreenVhs from 'states/ComputerScreenVhs';
 import EndView from 'states/EndView';
+import { Width, Height } from  "./Constants.js"
 
 class Game extends Phaser.Game {
 
   constructor() {
-    super(500, 500, Phaser.AUTO, 'content', null);
+    super(Width, Height, Phaser.AUTO, 'content', null);
     this.state.add('MainMenu', MainMenu, false);
     this.state.add('MainView', MainView, false);
     this.state.add('ComputerScreen', ComputerScreen, false);
@@ -21,7 +22,7 @@ class Game extends Phaser.Game {
     this.state.add('VhsView', VhsView, false);
     this.state.add('ComputerScreenVhs', ComputerScreenVhs, false);
     this.state.add('EndView', EndView, false);
-    this.state.start('MainMenu');
+    this.state.start('RightView');
     this.hasVHS = false;
     this.doorOpened = false;
     this.sawEnd = false;

@@ -6,6 +6,9 @@ export const StringDialog = {
   vhsPicked: "You picked the vhs cassette"
 };
 
+export const Width = 500;
+export const Height = 500;
+
 export const TextPosition = {
   x: 100,
   y: 20,
