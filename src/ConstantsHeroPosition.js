@@ -9,3 +9,9 @@ export const OnLeftOfLayer = {
   x: 10,
   y: FloorY - 32
 }
+
+
+export const PositionAfterComputer = {
+  x: 600,
+  y: FloorY - 32
+};

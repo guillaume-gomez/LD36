@@ -1,4 +1,4 @@
-import { PositionAfterComputer } from '../Constants.js';
+import { PositionAfterComputer } from '../ConstantsHeroPosition.js';
 
 const content = [
     "The sky above the port was the color of television,",

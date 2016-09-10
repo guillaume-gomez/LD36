@@ -1,4 +1,4 @@
-import { PositionAfterComputer } from '../Constants.js';
+import { PositionAfterComputer } from '../ConstantsHeroPosition.js';
 
 const OffsetX = 180;
 const OffsetY = 300;
