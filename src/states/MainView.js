@@ -2,6 +2,7 @@ import { StringDialog, TextPosition, FloorY, ComputerPosition, HeightComputer } 
 import { OnRightOfLayer, OnLeftOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString';
+import { loadColissionMap } from "../platformerUtils.js";
 
 class MainView extends Phaser.State {
 
@@ -26,7 +27,7 @@ class MainView extends Phaser.State {
 
     this.map = this.game.add.tilemap('Map1');
     this.map.addTilesetImage('myTileset', 'Tileset');
-    this.map.setCollisionBetween(455, 469);
+    loadColissionMap(this.map);
 
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();

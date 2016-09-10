@@ -2,6 +2,7 @@ import { TextPosition, StringDialog, FloorY, TypeRecorderPosition, HeightTypeRec
 import { OnRightOfLayer, OnLeftOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
+import { loadColissionMap } from "../platformerUtils.js";
 
 class LeftView extends Phaser.State {
 
@@ -26,7 +27,7 @@ class LeftView extends Phaser.State {
 
     this.map = this.game.add.tilemap('Map2');
     this.map.addTilesetImage('myTileset', 'Tileset');
-    this.map.setCollisionBetween(770, 785);
+    loadColissionMap(this.map);
 
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
@@ -57,6 +58,7 @@ class LeftView extends Phaser.State {
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image("typeRecorder", "res/type-recorder-min.png");
     this.game.load.tilemap('Map2', "res/secondLevel.json", null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.tilemap('Map6', "res/secondLevelFinish.json", null, Phaser.Tileset.TILED_JSON);
   }
 
   displayTextTypeRecorder() {

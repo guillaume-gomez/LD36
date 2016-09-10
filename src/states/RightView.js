@@ -3,6 +3,7 @@ import { OnLeftOfLayer, OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
 import CodeUI from "objects/CodeUI.js";
+import { loadColissionMap } from "../platformerUtils.js";
 
 const OffsetPwdUi = 100;
 
@@ -29,7 +30,7 @@ class RightView extends Phaser.State {
 
     this.map = this.game.add.tilemap('Map3');
     this.map.addTilesetImage('myTileset', 'Tileset');
-    this.map.setCollisionBetween(770, 785);
+    loadColissionMap(this.map);
 
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
