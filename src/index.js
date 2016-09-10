@@ -6,6 +6,7 @@ import LeftView from 'states/LeftView';
 import RightView from 'states/RightView';
 import VhsView from 'states/VhsView';
 import ComputerScreenVhs from 'states/ComputerScreenVhs';
+import EndView from 'states/EndView';
 
 class Game extends Phaser.Game {
 
@@ -19,7 +20,8 @@ class Game extends Phaser.Game {
     this.state.add('RightView', RightView, false);
     this.state.add('VhsView', VhsView, false);
     this.state.add('ComputerScreenVhs', ComputerScreenVhs, false);
-    this.state.start('LeftView');
+    this.state.add('EndView', EndView, false);
+    this.state.start('MainMenu');
     this.hasVHS = false;
     this.doorOpened = false;
     this.sawEnd = false;
@@ -52,6 +54,10 @@ class Game extends Phaser.Game {
 
   goToFourthScreen(params = null) {
     this.state.start('VhsView', Phaser.Plugin.StateTransition.Out.SlideLeft, Phaser.Plugin.StateTransition.Out.SlideLeft, true, true, params);
+  }
+
+  goToEndGameScreen() {
+    this.state.start('EndView');
   }
 
 
