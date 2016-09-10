@@ -49,6 +49,9 @@ class LeftView extends Phaser.State {
     if(this.hero.x + this.hero.width > this.game.world.width) {
       this.game.goToMainGame(OnLeftOfLayer);
     }
+    if(this.hero.x < 0) {
+      this.game.goToEndGameScreen();
+    }
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.typeRecorder, this.displayTextTypeRecorder, null, this);
   }
