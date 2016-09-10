@@ -57,8 +57,8 @@ class LeftView extends Phaser.State {
     this.game.load.image("test", "res/test.png");
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image("typeRecorder", "res/type-recorder-min.png");
-    this.game.load.tilemap('Map2', "res/secondLevel.json", null, Phaser.Tilemap.TILED_JSON);
-    this.game.load.tilemap('Map6', "res/secondLevelFinish.json", null, Phaser.Tileset.TILED_JSON);
+    const filename =  !this.game.sawEnd ? "res/secondLevel.json" : "res/secondLevelFinish.json";
+    this.game.load.tilemap('Map2', filename, null, Phaser.Tilemap.TILED_JSON);
   }
 
   displayTextTypeRecorder() {

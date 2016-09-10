@@ -19,9 +19,10 @@ class Game extends Phaser.Game {
     this.state.add('RightView', RightView, false);
     this.state.add('VhsView', VhsView, false);
     this.state.add('ComputerScreenVhs', ComputerScreenVhs, false);
-    this.state.start('MainMenu');
+    this.state.start('LeftView');
     this.hasVHS = false;
     this.doorOpened = false;
+    this.sawEnd = false;
 
   }
 
