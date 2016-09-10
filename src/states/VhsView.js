@@ -2,7 +2,7 @@ import { TextPosition, StringDialog, FloorY, VhsPosition } from '../Constants.js
 import { OnLeftOfLayer, OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
-import { loadColissionMap } from "../platformerUtils.js";
+import { loadColissionMap, collideLadder } from "../platformerUtils.js";
 
 class VhsView extends Phaser.State {
 
@@ -54,10 +54,7 @@ class VhsView extends Phaser.State {
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.overlap(this.hero, this.vhs, this.pickVhs, null, this);
 
-    const isCollide = this.game.physics.arcade.overlap(this.hero, this.ladder, this.hero.climbLadder, null, this.hero);
-    if(!isCollide && this.hero.isClimbing == true) {
-      this.hero.leaveLadder();
-    }
+    collideLadder(this.game, this.hero, this.ladder);
     if(this.hero.isDeath()) {
       this.game.goToFourthScreen(OnLeftOfLayer);
     }

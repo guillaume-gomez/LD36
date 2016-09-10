@@ -2,7 +2,7 @@ import { StringDialog, TextPosition, FloorY, ComputerPosition, HeightComputer } 
 import { OnRightOfLayer, OnLeftOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString';
-import { loadColissionMap } from "../platformerUtils.js";
+import { loadColissionMap, collideLadder } from "../platformerUtils.js";
 
 class MainView extends Phaser.State {
 
@@ -32,6 +32,9 @@ class MainView extends Phaser.State {
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
 
+     this.ladder = this.game.add.sprite(96 + 96 +32,221, "Ladder");
+    this.ladder.body.immovable = true;
+
     this.computer = this.game.add.sprite(ComputerPosition.x, ComputerPosition.y - HeightComputer, "computer");
 
     this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);
@@ -54,6 +57,7 @@ class MainView extends Phaser.State {
     if(this.hero.x + this.hero.width > this.game.world.width) {
       this.game.goToThirdLevel(OnLeftOfLayer)
     }
+    collideLadder(this.game, this.hero, this.ladder);
   }
 
   preload() {
@@ -61,6 +65,7 @@ class MainView extends Phaser.State {
     this.game.load.image("test", "res/test.png");
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image("computer", "res/computer.png");
+    this.game.load.image('Ladder', "res/ladder.png");
     this.game.load.tilemap('Map1', "res/firstLevel.json", null, Phaser.Tilemap.TILED_JSON);
   }
 

@@ -7,3 +7,10 @@ export function loadColissionMap(map) {
   map.setCollision([146,147,181,182]);
   map.setCollision([299,300,301,334,335,336,369,370,371]);
 }
+
+export function collideLadder(game, hero, ladder) {
+    const isCollide = game.physics.arcade.overlap(hero, ladder, hero.climbLadder, null, hero);
+    if(!isCollide && hero.isClimbing == true) {
+      hero.leaveLadder();
+    }
+}

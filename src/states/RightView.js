@@ -3,7 +3,7 @@ import { OnLeftOfLayer, OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
 import CodeUI from "objects/CodeUI.js";
-import { loadColissionMap } from "../platformerUtils.js";
+import { loadColissionMap, collideLadder } from "../platformerUtils.js";
 
 const OffsetPwdUi = 100;
 
@@ -73,11 +73,7 @@ class RightView extends Phaser.State {
     }
     this.game.physics.arcade.collide(this.hero, this.layer);
     this.game.physics.arcade.collide(this.hero, this.door, this.displayTextPassword, null, this);
-    //my precious ladder
-    const isCollide = this.game.physics.arcade.overlap(this.hero, this.ladder, this.hero.climbLadder, null, this.hero);
-    if(!isCollide && this.hero.isClimbing == true) {
-      this.hero.leaveLadder();
-    }
+    collideLadder(this.game, this.hero, this.ladder);
     if(this.hero.isDeath()) {
       this.game.goToThirdLevel(OnLeftOfLayer);
     }
@@ -87,7 +83,7 @@ class RightView extends Phaser.State {
     this.game.load.image("test", "res/test.png");
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image('Door',"res/door.png");
-    this.game.load.image('Ladder', "res/ladder.png")
+    this.game.load.image('Ladder', "res/ladder.png");
     this.game.load.tilemap('Map3', "res/rightLevel.json", null, Phaser.Tilemap.TILED_JSON);
   }
 
