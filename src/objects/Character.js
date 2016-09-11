@@ -15,10 +15,13 @@ class Character extends Phaser.Sprite {
     const leftArray = [28, 27, 26, 25, 24, 23, 22, 21];
     const rightArray = [1, 2, 3, 4, 5, 6, 7, 8];
     const JumpArray = [9, 10, 11, 12, 14];
+    const ladderArray = [30, 31, 32, 33, 34, 35];
 
-    this.animations.add('jump', JumpArray, TimeLapse, false);
-     this.animations.add('left', leftArray, TimeLapse, true);
+    this.animations.add('jump', JumpArray, TimeLapse, true);
+    this.animations.add('left', leftArray, TimeLapse, true);
     this.animations.add('right', rightArray, TimeLapse, true);
+    this.animations.add('climb', ladderArray, TimeLapse, true);
+    this.animations.add('climb-down', ladderArray.reverse(), TimeLapse, true);
     this.direction = 1;
   }
 
@@ -39,10 +42,8 @@ class Character extends Phaser.Sprite {
         this.direction = 1;
     } else {
       this.body.velocity.x = 0;
-       this.animations.stop('jump');
-       this.animations.stop('left');
-       this.animations.stop('right');
-       this.frame = this.direction ===  1 ? 0 : 29;
+      this.animations.stop();
+      this.frame = this.direction ===  1 ? 0 : 29;
     }
 
     // Make the player jump if he is touching the ground
@@ -54,9 +55,11 @@ class Character extends Phaser.Sprite {
     if(this.isClimbing) {
       if(this.cursor.up.isDown) {
         this.body.velocity.y = -150;
+        this.animations.play('climb', TimeLapse);
       }
       else if(this.cursor.down.isDown) {
         this.body.velocity.y = 150;
+        this.animations.play('climb-down', TimeLapse);
       } else {
         this.body.velocity.y = 0;
       }
