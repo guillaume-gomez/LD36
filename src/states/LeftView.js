@@ -1,4 +1,4 @@
-import { TextPosition, StringDialog, FloorY, TypeRecorderPosition, HeightTypeRecorder } from '../Constants.js';
+import { TextPosition, StringDialog, FloorY, TypeRecorderPosition, HeightTypeRecorder, WidthSpriteSheetHero, HeightSpriteSheetHero } from '../Constants.js';
 import { OnRightOfLayer, OnLeftOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
@@ -57,7 +57,7 @@ class LeftView extends Phaser.State {
   }
 
   preload() {
-    this.game.load.spritesheet("test", "res/hero.png", 25, 45);
+    this.game.load.spritesheet("test", "res/hero.png",WidthSpriteSheetHero, HeightSpriteSheetHero);
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image("typeRecorder", "res/type-recorder-min.png");
     const filename =  !this.game.sawEnd ? "res/secondLevel.json" : "res/secondLevelFinish.json";

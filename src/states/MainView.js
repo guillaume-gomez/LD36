@@ -1,4 +1,4 @@
-import { StringDialog, TextPosition, FloorY, ComputerPosition, HeightComputer } from '../Constants.js';
+import { StringDialog, TextPosition, FloorY, ComputerPosition, HeightComputer, WidthSpriteSheetHero, HeightSpriteSheetHero } from '../Constants.js';
 import { OnRightOfLayer, OnLeftOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString';
@@ -61,7 +61,7 @@ class MainView extends Phaser.State {
   }
 
   preload() {
-    this.game.load.spritesheet("test", "res/hero.png", 25, 45);
+    this.game.load.spritesheet("test", "res/hero.png", WidthSpriteSheetHero, HeightSpriteSheetHero);
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image("computer", "res/computer.png");
     this.game.load.image('Ladder', "res/ladder.png");

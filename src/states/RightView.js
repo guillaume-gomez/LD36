@@ -1,4 +1,4 @@
-import { TextPosition, StringDialog, FloorY, HeightTypeRecorder, DoorPosition, Width, DoorTextOffset } from '../Constants.js';
+import { TextPosition, StringDialog, FloorY, HeightTypeRecorder, DoorPosition, Width, DoorTextOffset, WidthSpriteSheetHero, HeightSpriteSheetHero } from '../Constants.js';
 import { OnLeftOfLayer, OnRightOfLayer } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
@@ -81,7 +81,7 @@ class RightView extends Phaser.State {
   }
 
   preload() {
-    this.game.load.spritesheet("test", "res/hero.png", 25, 45);
+    this.game.load.spritesheet("test", "res/hero.png", WidthSpriteSheetHero, HeightSpriteSheetHero);
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image('Door',"res/door.png");
     this.game.load.image('Ladder', "res/ladder.png");
