@@ -19,6 +19,7 @@ class Character extends Phaser.Sprite {
     this.animations.add('jump', JumpArray, TimeLapse, false);
      this.animations.add('left', leftArray, TimeLapse, true);
     this.animations.add('right', rightArray, TimeLapse, true);
+    this.direction = 1;
   }
 
   update() {
@@ -30,17 +31,20 @@ class Character extends Phaser.Sprite {
     if (this.cursor.left.isDown) {
         this.body.velocity.x = -200;
         this.animations.play("left", TimeLapse);
+        this.direction = -1;
     }
     else if (this.cursor.right.isDown) {
         this.body.velocity.x = 200;
         this.animations.play("right", TimeLapse);
+        this.direction = 1;
     } else {
       this.body.velocity.x = 0;
        this.animations.stop('jump');
        this.animations.stop('left');
        this.animations.stop('right');
-       this.frame.
+       this.frame = this.direction ===  1 ? 0 : 29;
     }
+
     // Make the player jump if he is touching the ground
     if (this.cursor.up.isDown && this.body.onFloor()) {
       this.body.velocity.y = -270;
