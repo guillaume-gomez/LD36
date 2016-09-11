@@ -61,8 +61,7 @@ class MainView extends Phaser.State {
   }
 
   preload() {
-    this.game.load.spritesheet('hero', 'res/blue_sheet.png', 32, 32);
-    this.game.load.image("test", "res/test.png");
+    this.game.load.spritesheet("test", "res/hero.png", 25, 45);
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image("computer", "res/computer.png");
     this.game.load.image('Ladder', "res/ladder.png");

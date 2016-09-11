@@ -61,7 +61,7 @@ class VhsView extends Phaser.State {
   }
 
   preload() {
-    this.game.load.image("test", "res/test.png");
+    this.game.load.spritesheet("test", "res/hero.png", 25, 45);
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image('Vhs',"res/vhs.png");
     this.game.load.image('Ladder',"res/ladder.png");

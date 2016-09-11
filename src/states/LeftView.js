@@ -57,7 +57,7 @@ class LeftView extends Phaser.State {
   }
 
   preload() {
-    this.game.load.image("test", "res/test.png");
+    this.game.load.spritesheet("test", "res/hero.png", 25, 45);
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image("typeRecorder", "res/type-recorder-min.png");
     const filename =  !this.game.sawEnd ? "res/secondLevel.json" : "res/secondLevelFinish.json";
