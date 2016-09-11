@@ -15,3 +15,8 @@ export const PositionAfterComputer = {
   x: 600,
   y: FloorY - 32
 };
+
+export const TypeRecorderPositionAfter = {
+  x: 1400,
+  y: FloorY - 32
+}
