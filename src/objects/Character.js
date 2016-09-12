@@ -42,8 +42,6 @@ class Character extends Phaser.Sprite {
         this.direction = 1;
     } else {
       this.body.velocity.x = 0;
-      this.animations.stop();
-      this.frame = this.direction ===  1 ? 0 : 29;
     }
 
     // Make the player jump if he is touching the ground
@@ -63,6 +61,11 @@ class Character extends Phaser.Sprite {
       } else {
         this.body.velocity.y = 0;
       }
+    }
+
+    if(this.body.velocity.x == 0 && this.body.velocity.y == 0){
+      this.animations.stop();
+      this.frame = this.direction ===  1 ? 0 : 29;
     }
   }
 
