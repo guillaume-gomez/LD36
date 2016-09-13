@@ -44,6 +44,7 @@ class VhsView extends Phaser.State {
     this.game.add.existing(this.hero);
     this.game.camera.follow(this.hero);
 
+    this.game.time.advancedTiming = true;
   }
 
 
@@ -73,6 +74,11 @@ class VhsView extends Phaser.State {
     this.vhs.kill();
     this.game.hasVHS = true;
   }
+
+  /*render() {
+    this.game.debug.body(this.ladder);
+    this.game.debug.text(this.game.time.fps, 2, 14, "#00ff00");
+  }*/
 }
 
 export default VhsView;

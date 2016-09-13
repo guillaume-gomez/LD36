@@ -42,6 +42,8 @@ class LeftView extends Phaser.State {
 
     this.text = new InformationString(this.game, TypeRecorderPosition.x, StringDialog.useTypeRecorder);
     this.game.add.existing(this.text);
+
+    this.game.time.advancedTiming = true;
   }
 
 
@@ -70,6 +72,11 @@ class LeftView extends Phaser.State {
       this.game.goToTypeRecordScreen();
     }
   }
+
+  /*render() {
+    this.game.debug.body(this.ladder);
+    this.game.debug.text(this.game.time.fps, 2, 14, "#00ff00");
+  }*/
 }
 
 export default LeftView;

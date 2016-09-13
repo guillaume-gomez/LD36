@@ -61,6 +61,8 @@ class RightView extends Phaser.State {
     this.hero = new Character(this.game, this.originalPosition.x , this.originalPosition.y, "test", 0);
     this.game.add.existing(this.hero);
     this.game.camera.follow(this.hero);
+
+    this.game.time.advancedTiming = true;
   }
 
 
@@ -95,6 +97,7 @@ class RightView extends Phaser.State {
 
   /*render() {
     this.game.debug.body(this.ladder);
+    this.game.debug.text(this.game.time.fps, 2, 14, "#00ff00");
   }*/
 }
 

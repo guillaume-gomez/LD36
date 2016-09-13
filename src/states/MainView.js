@@ -32,7 +32,7 @@ class MainView extends Phaser.State {
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
 
-     this.ladder = this.game.add.sprite(96 + 96 +32,221, "Ladder");
+    this.ladder = this.game.add.sprite(96 + 96 +32,221, "Ladder");
     this.ladder.body.immovable = true;
 
     this.computer = this.game.add.sprite(ComputerPosition.x, ComputerPosition.y - HeightComputer, "computer");
@@ -45,6 +45,8 @@ class MainView extends Phaser.State {
 
     this.text = new InformationString(this.game, ComputerPosition.x, StringDialog.onComputer);
     this.game.add.existing(this.text);
+
+    this.game.time.advancedTiming = true;
   }
 
 
@@ -79,9 +81,10 @@ class MainView extends Phaser.State {
     }
   }
 
-  // render() {
-  //   this.game.debug.spriteInfo(this.hero, 32, 400);
-  // }
+   //render() {
+     //this.game.debug.spriteInfo(this.hero, 32, 400);
+     //this.game.debug.text(this.game.time.fps, 2, 14, "#00ff00");
+   //}
 
 }
 
