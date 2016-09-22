@@ -1,14 +1,13 @@
 import { PositionAfterComputer } from '../ConstantsHeroPosition.js';
 
 const content = [
-    "The sky above the port was the color of television,",
-    " tuned to a dead channel.",
-    "`It's not like I'm using,' Case heard someone say,",
-    " as he shouldered his way ",
-    "through the crowd around the door of the Chat. `It's",
-    " like my body's developed",
-    "this massive drug deficiency",
-    "From Neuromancer by William Gibson",
+    "",
+    "Sometimes",
+    "New technology fastly become considered as",
+    "an Ancient technology",
+    "",
+    "Should we know how to use them in the",
+    "future",
     "",
     "Press Enter to leave the computer"
 ];
