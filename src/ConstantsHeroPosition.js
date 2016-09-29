@@ -5,6 +5,11 @@ export const OnRightOfLayer = {
   y: FloorY - 32
 }
 
+export const OnRightOfLayerVhsView = {
+  x: 1535,
+  y: FloorY - 32*7
+}
+
 export const OnLeftOfLayer = {
   x: 10,
   y: FloorY - 32
