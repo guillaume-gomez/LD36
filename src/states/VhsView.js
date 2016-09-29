@@ -1,5 +1,5 @@
 import { TextPosition, StringDialog, FloorY, VhsPosition, VhsTextOffset, WidthSpriteSheetHero, HeightSpriteSheetHero } from '../Constants.js';
-import { OnLeftOfLayer, OnRightOfLayer } from '../ConstantsHeroPosition.js';
+import { OnLeftOfLayer, OnRightOfLayer, OnRightOfLayerVhsView } from '../ConstantsHeroPosition.js';
 import Character from 'objects/Character';
 import InformationString from 'objects/InformationString.js';
 import { loadColissionMap, collideLadder } from "../platformerUtils.js";
@@ -35,7 +35,9 @@ class VhsView extends Phaser.State {
     this.ladder = this.game.add.sprite(64,189, "Ladder");
     this.ladder.body.immovable = true;
 
-    this.vhs = this.game.add.sprite(VhsPosition.x, VhsPosition.y, "Vhs");
+    if(!this.game.hasVHS) {
+      this.vhs = this.game.add.sprite(VhsPosition.x, VhsPosition.y, "Vhs");
+    }
 
     this.text = new InformationString(this.game, VhsPosition.x - VhsTextOffset, StringDialog.vhsPicked, 3000);
     this.game.add.existing(this.text);
@@ -53,11 +55,14 @@ class VhsView extends Phaser.State {
       this.game.goToThirdLevel(OnRightOfLayer);
     }
     this.game.physics.arcade.collide(this.hero, this.layer);
-    this.game.physics.arcade.overlap(this.hero, this.vhs, this.pickVhs, null, this);
+    if(!this.hasVHS) {
+      this.game.physics.arcade.overlap(this.hero, this.vhs, this.pickVhs, null, this);
+    }
 
     collideLadder(this.game, this.hero, this.ladder);
     if(this.hero.isDeath()) {
-      this.game.goToFourthScreen(OnLeftOfLayer);
+      const position = !this.game.hasVHS ? OnLeftOfLayer : OnRightOfLayerVhsView;
+      this.game.goToFourthScreen(position);
     }
   }
 
