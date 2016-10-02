@@ -1,7 +1,7 @@
 import { PositionAfterComputer } from '../ConstantsHeroPosition.js';
 
 const OffsetX = 180;
-const OffsetY = 300;
+const OffsetY = 310;
 const MaxFrame = 18;
 
 class ComputerScreenVhs extends Phaser.State {
