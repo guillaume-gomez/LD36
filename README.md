@@ -1,10 +1,5 @@
-# LD36
-
-my participation to the LD36
-![Game](./preview.png "ScreenShot")
-
-
 ## Theme  : Ancient Technology
+![Game](./preview.png "ScreenShot")
 
 ## Technologies
 - Javascript
