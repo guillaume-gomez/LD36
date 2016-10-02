@@ -24,7 +24,7 @@ class ComputerScreenVhs extends Phaser.State {
     this.screen = this.game.add.sprite(64,50, 'videos', 0);
     this.anim = this.screen.animations.add('playVideo');
     this.game.add.sprite(51, 400, 'stand');
-    this.game.add.sprite(0,0, "frame");
+    this.game.add.sprite(0,-2, "frame");
     this.game.sawEnd = true;
     const buttonPlay = this.game.add.button(OffsetX, OffsetY, 'buttonPlay', this.play, this, 2, 1, 0);
     const buttonImageByImge = this.game.add.button(OffsetX + 40, OffsetY, 'buttonImageByImge', this.imageByImage, this, 2, 1, 0);
