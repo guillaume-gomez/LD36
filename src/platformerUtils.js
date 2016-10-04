@@ -6,6 +6,7 @@ export function loadColissionMap(map) {
   map.setCollisionBetween(211,220);
   map.setCollision([146,147,181,182]);
   map.setCollision([299,300,301,334,335,336,369,370,371]);
+  map.setCollision([71,72,106,107])
 }
 
 export function collideLadder(game, hero, ladder) {
