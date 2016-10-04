@@ -71,7 +71,7 @@ class VhsView extends Phaser.State {
     this.game.load.image('Tileset', "res/tileset.png");
     this.game.load.image('Vhs',"res/vhs.png");
     this.game.load.image('Ladder',"res/ladder.png");
-    this.game.load.tilemap('Map4', "res/ThirdLevel.json", null, Phaser.Tilemap.TILED_JSON);
+    this.game.load.tilemap('Map4', "res/thirdLevel.json", null, Phaser.Tilemap.TILED_JSON);
   }
 
   pickVhs() {
