@@ -3,11 +3,11 @@ import { PositionAfterComputer } from '../ConstantsHeroPosition.js';
 const content = [
     "",
     "Sometimes",
-    "New technology fastly become considered as",
-    "an Ancient technology",
+    "New technology rapidly become outdated and",
+    "archaïc",
     "",
-    "Should we know how to use them in the",
-    "future",
+    "Will we use our ability to use them",
+    "once they're forgotten ?",
     "",
     "Press Enter to leave the computer"
 ];
