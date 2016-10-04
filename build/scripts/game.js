@@ -635,7 +635,7 @@ function _inherits(subClass, superClass) {
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
-var content = ["", "Sometimes", "New technology fastly become considered as", "an Ancient technology", "", "Should we know how to use them in the", "future", "", "Press Enter to leave the computer"];
+var content = ["", "Sometimes", "New technology rapidly become outdated and", "archaïc", "", "Will we use our ability to use them", "once they're forgotten ?", "", "Press Enter to leave the computer"];
 
 var frament = ["uniform sampler2D tex0;", "uniform sampler2D tex1;", "", "void main()", "{", "    vec4 t0 = texture2D(tex0, gl_TexCoord[0].st);", "    vec4 t1 = texture2D(tex1, gl_TexCoord[0].st);", "    gl_FragColor = mix(t0, t1, t1.a);", "}"];
 
@@ -872,7 +872,7 @@ var EndView = function (_Phaser$State) {
     key: "create",
     value: function create() {
       this.game.add.text(120, 200, "Thanks for playing  again ! :)", { font: "bold 21px Arial", fill: "#fff" });
-      this.game.add.text(40, 280, "I hope it was as much fun to play as to develop it!", { font: "bold 18px Arial", fill: "#fff" });
+      this.game.add.text(40, 280, "I hope you enjoyed playing it as much I did coding it!", { font: "bold 18px Arial", fill: "#fff" });
     }
   }, {
     key: "preload",
