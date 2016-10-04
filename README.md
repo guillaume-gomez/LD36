@@ -1,4 +1,5 @@
 ## Theme  : Ancient Technology
+[Play Online](https://guillaume-gomez.github.io/LD36/build/)
 ![Game](./preview.png "ScreenShot")
 
 ## Technologies
