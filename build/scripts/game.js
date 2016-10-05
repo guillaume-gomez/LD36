@@ -589,6 +589,7 @@ function loadColissionMap(map) {
   map.setCollisionBetween(211, 220);
   map.setCollision([146, 147, 181, 182]);
   map.setCollision([299, 300, 301, 334, 335, 336, 369, 370, 371]);
+  map.setCollision([71, 72, 106, 107]);
 }
 
 function collideLadder(game, hero, ladder) {
@@ -1734,7 +1735,7 @@ var VhsView = function (_Phaser$State) {
       this.game.load.image('Tileset', "res/tileset.png");
       this.game.load.image('Vhs', "res/vhs.png");
       this.game.load.image('Ladder', "res/ladder.png");
-      this.game.load.tilemap('Map4', "res/ThirdLevel.json", null, Phaser.Tilemap.TILED_JSON);
+      this.game.load.tilemap('Map4', "res/thirdLevel.json", null, Phaser.Tilemap.TILED_JSON);
     }
   }, {
     key: 'pickVhs',
