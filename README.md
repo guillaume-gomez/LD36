@@ -1,3 +1,10 @@
-# LD36
+## Theme  : Ancient Technology
+[Play Online](https://guillaume-gomez.github.io/LD36/build/)
+![Game](./preview.png "ScreenShot")
 
-my participation to the LD36
+## Technologies
+- Javascript
+- [Phaser js](http://phaser.io/)
+- [es6 boilersplate](https://github.com/belohlavek/phaser-es6-boilerplate)
+
+

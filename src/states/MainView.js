@@ -32,7 +32,7 @@ class MainView extends Phaser.State {
     this.layer = this.map.createLayer('Tile Layer 1');
     this.layer.resizeWorld();
 
-    this.ladder = this.game.add.sprite(96 + 96 +32,221, "Ladder");
+    this.ladder = this.game.add.sprite(224,221, "Ladder");
     this.ladder.body.immovable = true;
 
     this.computer = this.game.add.sprite(ComputerPosition.x, ComputerPosition.y - HeightComputer, "computer");
