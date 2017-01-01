@@ -1,5 +1,3 @@
-import { OnLeftOfLayer } from "../ConstantsHeroPosition.js";
-
 class MainMenu extends Phaser.State {
 
   create() {
@@ -16,7 +14,7 @@ class MainMenu extends Phaser.State {
 
   update() {
     if(this.enterButton.isDown) {
-      this.game.goToMainGame(OnLeftOfLayer);
+      this.game.goToCommandsScreen();
     }
   }
 
