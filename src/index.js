@@ -1,5 +1,6 @@
 import MainView from 'states/MainView';
 import MainMenu from 'states/MainMenu';
+import CommandsScreen from "states/CommandsScreen";
 import ComputerScreen from 'states/ComputerScreen';
 import TypeRecordScreen from 'states/TypeRecordScreen';
 import LeftView from 'states/LeftView';
@@ -14,6 +15,7 @@ class Game extends Phaser.Game {
   constructor() {
     super(Width, Height, Phaser.AUTO, 'content', null);
     this.state.add('MainMenu', MainMenu, false);
+    this.state.add('CommandsScreen', CommandsScreen, false);
     this.state.add('MainView', MainView, false);
     this.state.add('ComputerScreen', ComputerScreen, false);
     this.state.add('TypeRecordScreen', TypeRecordScreen, false);
@@ -27,6 +29,10 @@ class Game extends Phaser.Game {
     this.doorOpened = false;
     this.sawEnd = false;
 
+  }
+
+  goToCommandsScreen() {
+    this.state.start('CommandsScreen');
   }
 
   goToScreenMode() {
