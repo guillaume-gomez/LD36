@@ -115,6 +115,10 @@ var _MainMenu = require('states/MainMenu');
 
 var _MainMenu2 = _interopRequireDefault(_MainMenu);
 
+var _CommandsScreen = require('states/CommandsScreen');
+
+var _CommandsScreen2 = _interopRequireDefault(_CommandsScreen);
+
 var _ComputerScreen = require('states/ComputerScreen');
 
 var _ComputerScreen2 = _interopRequireDefault(_ComputerScreen);
@@ -176,6 +180,7 @@ var Game = function (_Phaser$Game) {
     var _this = _possibleConstructorReturn(this, (Game.__proto__ || Object.getPrototypeOf(Game)).call(this, _Constants.Width, _Constants.Height, Phaser.AUTO, 'content', null));
 
     _this.state.add('MainMenu', _MainMenu2.default, false);
+    _this.state.add('CommandsScreen', _CommandsScreen2.default, false);
     _this.state.add('MainView', _MainView2.default, false);
     _this.state.add('ComputerScreen', _ComputerScreen2.default, false);
     _this.state.add('TypeRecordScreen', _TypeRecordScreen2.default, false);
@@ -193,6 +198,11 @@ var Game = function (_Phaser$Game) {
   }
 
   _createClass(Game, [{
+    key: 'goToCommandsScreen',
+    value: function goToCommandsScreen() {
+      this.state.start('CommandsScreen');
+    }
+  }, {
     key: 'goToScreenMode',
     value: function goToScreenMode() {
       this.state.start('ComputerScreen');
@@ -247,7 +257,7 @@ var Game = function (_Phaser$Game) {
 
 new Game();
 
-},{"./Constants.js":1,"states/ComputerScreen":8,"states/ComputerScreenVhs":9,"states/EndView":10,"states/LeftView":11,"states/MainMenu":12,"states/MainView":13,"states/RightView":14,"states/TypeRecordScreen":15,"states/VhsView":16}],4:[function(require,module,exports){
+},{"./Constants.js":1,"states/CommandsScreen":8,"states/ComputerScreen":9,"states/ComputerScreenVhs":10,"states/EndView":11,"states/LeftView":12,"states/MainMenu":13,"states/MainView":14,"states/RightView":15,"states/TypeRecordScreen":16,"states/VhsView":17}],4:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -636,6 +646,79 @@ function _inherits(subClass, superClass) {
   }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
+var CommandsScreen = function (_Phaser$State) {
+  _inherits(CommandsScreen, _Phaser$State);
+
+  function CommandsScreen() {
+    _classCallCheck(this, CommandsScreen);
+
+    return _possibleConstructorReturn(this, (CommandsScreen.__proto__ || Object.getPrototypeOf(CommandsScreen)).apply(this, arguments));
+  }
+
+  _createClass(CommandsScreen, [{
+    key: "create",
+    value: function create() {
+      this.game.add.text(10, 100, "Solve puzzles to find a way out", { font: "bold 33px Arial", fill: "#fff" });
+      //this.game.add.text(100, 230, "Commands", { font: "bold 28px Arial", fill: "#fff" });
+      this.game.add.text(30, 250, "Move", { font: "bold 28px Arial", fill: "#fff" });
+      this.game.add.text(250, 250, "Arrows keys", { font: "bold 28px Arial", fill: "#fff" });
+
+      this.game.add.text(30, 350, "Interact", { font: "bold 28px Arial", fill: "#fff" });
+      this.game.add.text(250, 350, "Left mouse button", { font: "bold 28px Arial", fill: "#fff" });
+
+      this.enterButton = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      if (this.enterButton.isDown) {
+        this.game.goToMainGame(_ConstantsHeroPosition.OnLeftOfLayer);
+      }
+    }
+  }]);
+
+  return CommandsScreen;
+}(Phaser.State);
+
+exports.default = CommandsScreen;
+
+},{"../ConstantsHeroPosition.js":2}],9:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+  };
+}();
+
+var _ConstantsHeroPosition = require("../ConstantsHeroPosition.js");
+
+function _classCallCheck(instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+}
+
+function _possibleConstructorReturn(self, call) {
+  if (!self) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }return call && (typeof call === "object" || typeof call === "function") ? call : self;
+}
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+}
+
 var content = ["", "Sometimes", "New technology rapidly become outdated and", "archaïc", "", "Will we use our ability to use them", "once they're forgotten ?", "", "Press Enter to leave the computer"];
 
 var frament = ["uniform sampler2D tex0;", "uniform sampler2D tex1;", "", "void main()", "{", "    vec4 t0 = texture2D(tex0, gl_TexCoord[0].st);", "    vec4 t1 = texture2D(tex1, gl_TexCoord[0].st);", "    gl_FragColor = mix(t0, t1, t1.a);", "}"];
@@ -713,7 +796,7 @@ var ComputerScreen = function (_Phaser$State) {
 
 exports.default = ComputerScreen;
 
-},{"../ConstantsHeroPosition.js":2}],9:[function(require,module,exports){
+},{"../ConstantsHeroPosition.js":2}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -825,7 +908,7 @@ var ComputerScreenVhs = function (_Phaser$State) {
 
 exports.default = ComputerScreenVhs;
 
-},{"../ConstantsHeroPosition.js":2}],10:[function(require,module,exports){
+},{"../ConstantsHeroPosition.js":2}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -888,7 +971,7 @@ var EndView = function (_Phaser$State) {
 
 exports.default = EndView;
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1034,7 +1117,7 @@ var LeftView = function (_Phaser$State) {
 
 exports.default = LeftView;
 
-},{"../Constants.js":1,"../ConstantsHeroPosition.js":2,"../platformerUtils.js":7,"objects/Character":4,"objects/InformationString.js":6}],12:[function(require,module,exports){
+},{"../Constants.js":1,"../ConstantsHeroPosition.js":2,"../platformerUtils.js":7,"objects/Character":4,"objects/InformationString.js":6}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1050,8 +1133,6 @@ var _createClass = function () {
     if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
   };
 }();
-
-var _ConstantsHeroPosition = require("../ConstantsHeroPosition.js");
 
 function _classCallCheck(instance, Constructor) {
   if (!(instance instanceof Constructor)) {
@@ -1098,7 +1179,7 @@ var MainMenu = function (_Phaser$State) {
     key: "update",
     value: function update() {
       if (this.enterButton.isDown) {
-        this.game.goToMainGame(_ConstantsHeroPosition.OnLeftOfLayer);
+        this.game.goToCommandsScreen();
       }
     }
   }]);
@@ -1108,7 +1189,7 @@ var MainMenu = function (_Phaser$State) {
 
 exports.default = MainMenu;
 
-},{"../ConstantsHeroPosition.js":2}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1261,7 +1342,7 @@ var MainView = function (_Phaser$State) {
 
 exports.default = MainView;
 
-},{"../Constants.js":1,"../ConstantsHeroPosition.js":2,"../platformerUtils.js":7,"objects/Character":4,"objects/InformationString":6}],14:[function(require,module,exports){
+},{"../Constants.js":1,"../ConstantsHeroPosition.js":2,"../platformerUtils.js":7,"objects/Character":4,"objects/InformationString":6}],15:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1432,7 +1513,7 @@ var RightView = function (_Phaser$State) {
 
 exports.default = RightView;
 
-},{"../Constants.js":1,"../ConstantsHeroPosition.js":2,"../platformerUtils.js":7,"objects/Character":4,"objects/CodeUI.js":5,"objects/InformationString.js":6}],15:[function(require,module,exports){
+},{"../Constants.js":1,"../ConstantsHeroPosition.js":2,"../platformerUtils.js":7,"objects/Character":4,"objects/CodeUI.js":5,"objects/InformationString.js":6}],16:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1604,7 +1685,7 @@ var TypeRecordScreen = function (_Phaser$State) {
 
 exports.default = TypeRecordScreen;
 
-},{"../Constants.js":1,"../ConstantsHeroPosition.js":2}],16:[function(require,module,exports){
+},{"../Constants.js":1,"../ConstantsHeroPosition.js":2}],17:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
